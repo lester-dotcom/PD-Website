@@ -2,25 +2,34 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import IconBadge from '../components/IconBadge.astro';
 
 const useCases = [
   {
     title: 'Creative variation at speed',
     description: 'AI tools help us produce and test more ad copy and creative variants than would be practical manually, though the specialist still decides what actually ships.',
+    icon: 'sparkles',
+    color: 'green',
   },
   {
     title: 'Faster account analysis',
     description: 'Surfacing patterns across large accounts quickly, so more time goes into deciding what to do about them rather than digging for them.',
+    icon: 'chart',
+    color: 'orange',
   },
   {
     title: 'Reporting, not busywork',
     description: 'Automating the repetitive parts of reporting frees up time for the analysis clients actually want to talk about.',
+    icon: 'layers',
+    color: 'green',
   },
   {
     title: 'Human judgement stays in charge',
     description: 'AI recommendations and automation are checked against your commercial goals before anything touches live spend, the same standard we hold platform automation to.',
+    icon: 'shield',
+    color: 'orange',
   },
-];
+] as const;
 ---
 
 <BaseLayout
@@ -38,7 +47,8 @@ const useCases = [
     <div class="mt-10 grid gap-8 sm:grid-cols-2">
       {useCases.map((item) => (
         <div class="rounded-2xl border border-gray-100 p-6">
-          <h3 class="font-semibold text-brand-slate">{item.title}</h3>
+          <IconBadge icon={item.icon} color={item.color} />
+          <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
           <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
         </div>
       ))}

@@ -2,25 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import IconBadge from '../components/IconBadge.astro';
 
 const workshops = [
-  {
-    title: 'PPC Fundamentals',
-    description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.',
-  },
-  {
-    title: 'Account Audits, Live',
-    description: 'We audit your account in the room, talking through what we find and why it matters.',
-  },
-  {
-    title: 'Advanced Bidding & Automation',
-    description: 'Understand what the platform automation is actually doing, and where to keep control.',
-  },
-  {
-    title: 'Bespoke Team Training',
-    description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.',
-  },
-];
+  { title: 'PPC Fundamentals', description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.', icon: 'graduation-cap', color: 'green' },
+  { title: 'Account Audits, Live', description: 'We audit your account in the room, talking through what we find and why it matters.', icon: 'search', color: 'orange' },
+  { title: 'Advanced Bidding & Automation', description: 'Understand what the platform automation is actually doing, and where to keep control.', icon: 'chart', color: 'green' },
+  { title: 'Bespoke Team Training', description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.', icon: 'users', color: 'orange' },
+] as const;
 ---
 
 <BaseLayout
@@ -37,7 +26,8 @@ const workshops = [
     <div class="grid gap-8 sm:grid-cols-2">
       {workshops.map((workshop) => (
         <div class="rounded-2xl border border-gray-100 p-6">
-          <h3 class="font-semibold text-brand-slate">{workshop.title}</h3>
+          <IconBadge icon={workshop.icon} color={workshop.color} />
+          <h3 class="mt-4 font-semibold text-brand-slate">{workshop.title}</h3>
           <p class="mt-2 text-sm text-brand-slate-light">{workshop.description}</p>
         </div>
       ))}

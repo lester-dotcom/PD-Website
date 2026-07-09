@@ -2,25 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import IconBadge from '../components/IconBadge.astro';
 
 const points = [
-  {
-    title: 'White-label delivery',
-    description: 'We work under your brand, reporting through you: your clients never need to know we exist.',
-  },
-  {
-    title: 'Overflow capacity',
-    description: 'Take on more accounts than your current team can handle without a rushed hire.',
-  },
-  {
-    title: 'Specialist coverage',
-    description: 'Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest) that you don’t have in-house.',
-  },
-  {
-    title: 'Flexible engagement',
-    description: 'Scale up or down per account, per month. No long lock-in contracts.',
-  },
-];
+  { title: 'White-label delivery', description: 'We work under your brand, reporting through you: your clients never need to know we exist.', icon: 'shield', color: 'green' },
+  { title: 'Overflow capacity', description: 'Take on more accounts than your current team can handle without a rushed hire.', icon: 'users', color: 'orange' },
+  { title: 'Specialist coverage', description: 'Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest) that you don’t have in-house.', icon: 'layers', color: 'green' },
+  { title: 'Flexible engagement', description: 'Scale up or down per account, per month. No long lock-in contracts.', icon: 'target', color: 'orange' },
+] as const;
 ---
 
 <BaseLayout
@@ -37,7 +26,8 @@ const points = [
     <div class="grid gap-8 sm:grid-cols-2">
       {points.map((point) => (
         <div class="rounded-2xl border border-gray-100 p-6">
-          <h3 class="font-semibold text-brand-slate">{point.title}</h3>
+          <IconBadge icon={point.icon} color={point.color} />
+          <h3 class="mt-4 font-semibold text-brand-slate">{point.title}</h3>
           <p class="mt-2 text-sm text-brand-slate-light">{point.description}</p>
         </div>
       ))}

@@ -2,19 +2,24 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import IconBadge from '../../components/IconBadge.astro';
 
 const platforms = [
   {
     title: 'Google Ads',
     href: '/paid-search/google-ads',
     description: 'Search, Shopping, Performance Max and YouTube campaigns built around real commercial intent.',
+    icon: 'search',
+    color: 'green',
   },
   {
     title: 'Microsoft Ads',
     href: '/paid-search/microsoft-ads',
     description: 'Reach the audience Google can’t, often at a lower cost per click.',
+    icon: 'compass',
+    color: 'orange',
   },
-];
+] as const;
 ---
 
 <BaseLayout
@@ -34,7 +39,8 @@ const platforms = [
           href={platform.href}
           class="block rounded-2xl border border-gray-100 p-8 transition hover:border-brand-green hover:shadow-md"
         >
-          <h3 class="text-lg font-semibold text-brand-slate">{platform.title}</h3>
+          <IconBadge icon={platform.icon} color={platform.color} />
+          <h3 class="mt-4 text-lg font-semibold text-brand-slate">{platform.title}</h3>
           <p class="mt-2 text-sm text-brand-slate-light">{platform.description}</p>
         </a>
       ))}

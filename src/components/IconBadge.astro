@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  icon: Parameters<typeof Icon>[0]['name'];
+  color?: 'green' | 'orange';
+}
+
+const { icon, color = 'green' } = Astro.props;
+
+const colorClasses = {
+  green: 'bg-brand-green/10 text-brand-green-dark',
+  orange: 'bg-brand-orange/10 text-brand-orange-dark',
+};
+---
+
+<div class={`flex h-12 w-12 items-center justify-center rounded-xl ${colorClasses[color]}`}>
+  <Icon name={icon} class="h-6 w-6" />
+</div>
