@@ -9,16 +9,16 @@ Most accounts we audit are running Google Ads well and Microsoft Ads not at all.
 
 ## Less competition, similar intent
 
-Search intent on Microsoft's network mirrors Google's closely — but with a smaller advertiser pool bidding on it, cost per click is typically lower for the same keywords.
+Search intent on Microsoft's network mirrors Google's closely, but with a smaller advertiser pool bidding on it, cost per click is typically lower for the same keywords.
 
 ## Start with an import, then diverge
 
-The fastest way to get a Microsoft Ads account live is to import your existing Google Ads campaigns. That gives you a working baseline in minutes. From there, the accounts should diverge — Microsoft's audience skews older and more desktop-based, so bid and audience adjustments matter.
+The fastest way to get a Microsoft Ads account live is to import your existing Google Ads campaigns. That gives you a working baseline in minutes. From there, the accounts should diverge: Microsoft's audience skews older and more desktop-based, so bid and audience adjustments matter.
 
 ## What to watch
 
-- **Audience Network placements** can bring in low-quality traffic if left unchecked — review placement reports early.
+- **Audience Network placements** can bring in low-quality traffic if left unchecked, so review placement reports early.
 - **LinkedIn Profile Targeting** is unique to Microsoft and genuinely useful for B2B advertisers.
-- **Import drift** — once imported, Google and Microsoft campaigns should be optimised independently, not kept in permanent sync.
+- **Import drift**: once imported, Google and Microsoft campaigns should be optimised independently, not kept in permanent sync.
 
 If Microsoft Ads isn't on your roadmap yet, it's worth a proper test before writing it off.
