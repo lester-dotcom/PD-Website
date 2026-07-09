@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
-import PlatformBadge from '../../components/PlatformBadge.astro';
+import PlatformLogo from '../../components/PlatformLogo.astro';
 
 const platforms = [
   { title: 'Meta (Facebook & Instagram)', href: '/paid-social/meta', description: 'Facebook and Instagram campaigns built on creative testing and clean event tracking.', platform: 'facebook', color: 'green' },
@@ -34,13 +34,15 @@ const cardColors = {
             href={platform.href}
             class={`group block rounded-2xl p-8 transition hover:-translate-y-1 hover:shadow-xl ${cardColors[platform.color]}`}
           >
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
-              {'platform' in platform ? (
-                <PlatformBadge platform={platform.platform} class="h-6 w-6" />
-              ) : (
+            {'platform' in platform ? (
+              <div class="inline-flex items-center rounded-xl bg-white/90 px-4 py-3">
+                <PlatformLogo platform={platform.platform} class="h-7 w-auto" />
+              </div>
+            ) : (
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
                 <Icon name={platform.icon} class="h-6 w-6" />
-              )}
-            </div>
+              </div>
+            )}
             <h3 class="mt-4 text-lg font-semibold text-brand-slate">{platform.title}</h3>
             <p class="mt-2 text-sm text-brand-slate/75">{platform.description}</p>
             <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-slate opacity-0 transition group-hover:opacity-100">

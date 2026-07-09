@@ -1,5 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import { iconPaths } from '../lib/icon-paths';
+import googleIcon from '../assets/logos/icon/google.png';
+import microsoftIcon from '../assets/logos/icon/microsoft.png';
+import metaIcon from '../assets/logos/icon/meta.png';
+import linkedinIcon from '../assets/logos/icon/linkedin.png';
+import pinterestIcon from '../assets/logos/icon/pinterest.png';
 
 export type PlatformName = 'google' | 'bing' | 'facebook' | 'instagram' | 'linkedin' | 'pinterest' | 'youtube';
 
@@ -10,32 +16,25 @@ interface Props {
 
 const { platform, class: className = 'h-6 w-6' } = Astro.props;
 
-const letters: Partial<Record<PlatformName, string>> = {
-  google: 'G',
-  bing: 'b',
-  facebook: 'f',
-  linkedin: 'in',
-  pinterest: 'P',
-};
+const images = {
+  google: { src: googleIcon, alt: 'Google Ads' },
+  bing: { src: microsoftIcon, alt: 'Microsoft Advertising' },
+  facebook: { src: metaIcon, alt: 'Meta' },
+  linkedin: { src: linkedinIcon, alt: 'LinkedIn' },
+  pinterest: { src: pinterestIcon, alt: 'Pinterest' },
+} as const;
 
-const letter = letters[platform];
+const image = platform in images ? images[platform as keyof typeof images] : null;
 ---
 
-{letter ? (
-  <svg viewBox="0 0 24 24" class={className} aria-hidden="true">
-    <text
-      x="12"
-      y="13"
-      text-anchor="middle"
-      dominant-baseline="central"
-      font-family="Roboto, Arial, sans-serif"
-      font-weight="700"
-      font-size={letter.length > 1 ? 10.5 : 15}
-      fill="currentColor"
-    >
-      {letter}
-    </text>
-  </svg>
+{image ? (
+  <Image
+    src={image.src}
+    alt={image.alt}
+    width={image.src.width}
+    height={image.src.height}
+    class={`${className} object-contain`}
+  />
 ) : (
   <svg
     viewBox="0 0 24 24"

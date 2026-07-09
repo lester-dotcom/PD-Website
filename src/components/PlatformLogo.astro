@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import googleLogo from '../assets/logos/full/google.png';
+import microsoftLogo from '../assets/logos/full/microsoft.png';
+import metaLogo from '../assets/logos/full/meta.png';
+import linkedinLogo from '../assets/logos/full/linkedin.png';
+import pinterestLogo from '../assets/logos/full/pinterest.png';
+
+export type FullLogoPlatform = 'google' | 'bing' | 'facebook' | 'linkedin' | 'pinterest';
+
+interface Props {
+  platform: FullLogoPlatform;
+  class?: string;
+}
+
+const { platform, class: className = 'h-8 w-auto' } = Astro.props;
+
+const logos = {
+  google: { src: googleLogo, alt: 'Google Ads' },
+  bing: { src: microsoftLogo, alt: 'Microsoft Advertising' },
+  facebook: { src: metaLogo, alt: 'Meta Ads' },
+  linkedin: { src: linkedinLogo, alt: 'LinkedIn Ads' },
+  pinterest: { src: pinterestLogo, alt: 'Pinterest Ads' },
+} as const;
+
+const logo = logos[platform];
+---
+
+<Image
+  src={logo.src}
+  alt={logo.alt}
+  width={logo.src.width}
+  height={logo.src.height}
+  class={`${className} object-contain`}
+/>
