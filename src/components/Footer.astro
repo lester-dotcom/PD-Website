@@ -1,0 +1,50 @@
+---
+import logoWhite from '../assets/logo-white.png';
+import { Image } from 'astro:assets';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-slate text-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <Image src={logoWhite} alt="Pratt Digital" width={150} height={51} class="h-9 w-auto" />
+      <p class="mt-4 text-sm text-white/70">
+        Paid search and paid social specialists helping brands and agencies grow with data-led PPC management.
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-green">Services</h3>
+      <ul class="mt-4 space-y-2 text-sm text-white/80">
+        <li><a href="/paid-search" class="hover:text-brand-green">Paid Search</a></li>
+        <li><a href="/paid-social" class="hover:text-brand-green">Paid Social</a></li>
+        <li><a href="/for-agencies" class="hover:text-brand-green">For Agencies</a></li>
+        <li><a href="/training-and-workshops" class="hover:text-brand-green">Training &amp; Workshops</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-green">Company</h3>
+      <ul class="mt-4 space-y-2 text-sm text-white/80">
+        <li><a href="/about-us" class="hover:text-brand-green">About Us</a></li>
+        <li><a href="/blog" class="hover:text-brand-green">Blog</a></li>
+        <li><a href="/contact-us" class="hover:text-brand-green">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-green">Get in Touch</h3>
+      <ul class="mt-4 space-y-2 text-sm text-white/80">
+        <li><a href="mailto:hello@prattdigital.com" class="hover:text-brand-green">hello@prattdigital.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Pratt Digital. All rights reserved.</p>
+      <p>Registered in England &amp; Wales.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const points = [
+  {
+    title: 'White-label delivery',
+    description: 'We work under your brand, reporting through you — your clients never need to know we exist.',
+  },
+  {
+    title: 'Overflow capacity',
+    description: 'Take on more accounts than your current team can handle without a rushed hire.',
+  },
+  {
+    title: 'Specialist coverage',
+    description: 'Bring in platform expertise — Microsoft Ads, LinkedIn, Pinterest — that you don’t have in-house.',
+  },
+  {
+    title: 'Flexible engagement',
+    description: 'Scale up or down per account, per month. No long lock-in contracts.',
+  },
+];
+---
+
+<BaseLayout
+  title="For Agencies"
+  description="White-label paid search and paid social delivery for agencies. Add specialist PPC capacity without the overhead of hiring in-house."
+>
+  <PageHero
+    eyebrow="For Agencies"
+    title="Extra PPC capacity, without the overhead"
+    description="We deliver white-label paid search and paid social management for agencies who need specialist capacity — for overflow, for a skill gap, or for a client that needs more attention than the current team can give."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-8 sm:grid-cols-2">
+      {points.map((point) => (
+        <div class="rounded-2xl border border-gray-100 p-6">
+          <h3 class="font-semibold text-brand-slate">{point.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{point.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Need extra hands on an account?"
+    description="Tell us about the accounts you need support with and we'll put together a plan."
+  />
+</BaseLayout>

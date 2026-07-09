@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with Pratt Digital to talk about your paid search and paid social campaigns."
+>
+  <PageHero
+    eyebrow="Contact Us"
+    title="Let's talk about your account"
+    description="Tell us a bit about what you're running today and what you'd like to achieve. We'll come back with honest thoughts, not a sales script."
+  />
+
+  <section class="mx-auto max-w-2xl px-6 py-16">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="name" class="block text-sm font-medium text-brand-slate">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            class="mt-2 w-full rounded-lg border border-gray-200 px-4 py-2.5 text-brand-slate focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-brand-slate">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            class="mt-2 w-full rounded-lg border border-gray-200 px-4 py-2.5 text-brand-slate focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="company" class="block text-sm font-medium text-brand-slate">Company</label>
+        <input
+          type="text"
+          name="company"
+          id="company"
+          class="mt-2 w-full rounded-lg border border-gray-200 px-4 py-2.5 text-brand-slate focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+        />
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium text-brand-slate">How can we help?</label>
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          required
+          class="mt-2 w-full rounded-lg border border-gray-200 px-4 py-2.5 text-brand-slate focus:border-brand-green focus:outline-none focus:ring-1 focus:ring-brand-green"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-full bg-brand-green px-7 py-3 text-sm font-semibold text-brand-slate transition hover:bg-brand-green-dark"
+      >
+        Send Message
+      </button>
+    </form>
+
+    <div class="mt-12 border-t border-gray-100 pt-8 text-sm text-brand-slate-light">
+      <p>Prefer email? Reach us directly at <a href="mailto:hello@prattdigital.com" class="text-brand-green-dark">hello@prattdigital.com</a></p>
+    </div>
+  </section>
+</BaseLayout>

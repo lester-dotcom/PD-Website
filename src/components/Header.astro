@@ -1,0 +1,112 @@
+---
+import logo from '../assets/logo.png';
+import { Image } from 'astro:assets';
+
+const paidSearch = [
+  { label: 'Google Ads', href: '/paid-search/google-ads' },
+  { label: 'Microsoft Ads', href: '/paid-search/microsoft-ads' },
+];
+
+const paidSocial = [
+  { label: 'Meta', href: '/paid-social/meta' },
+  { label: 'LinkedIn', href: '/paid-social/linkedin' },
+  { label: 'Pinterest', href: '/paid-social/pinterest' },
+  { label: 'Other Channels', href: '/paid-social/other-channels' },
+];
+---
+
+<header class="border-b border-gray-100">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2" aria-label="Pratt Digital home">
+      <Image src={logo} alt="Pratt Digital" width={160} height={54} class="h-10 w-auto" />
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-1 text-sm font-medium text-brand-slate">
+        <li>
+          <a href="/about-us" class="block px-3 py-2 hover:text-brand-green-dark">About Us</a>
+        </li>
+        <li class="group relative">
+          <a href="/paid-search" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
+            Paid Search
+            <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
+          </a>
+          <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+            {paidSearch.map((item) => (
+              <li>
+                <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li class="group relative">
+          <a href="/paid-social" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
+            Paid Social
+            <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
+          </a>
+          <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+            {paidSocial.map((item) => (
+              <li>
+                <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li><a href="/for-agencies" class="block px-3 py-2 hover:text-brand-green-dark">For Agencies</a></li>
+        <li><a href="/training-and-workshops" class="block px-3 py-2 hover:text-brand-green-dark">Training</a></li>
+        <li><a href="/blog" class="block px-3 py-2 hover:text-brand-green-dark">Blog</a></li>
+      </ul>
+    </nav>
+
+    <a
+      href="/contact-us"
+      class="hidden rounded-full bg-brand-green px-5 py-2.5 text-sm font-semibold text-brand-slate transition hover:bg-brand-green-dark lg:inline-block"
+    >
+      Contact Us
+    </a>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Toggle menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-7 w-7 fill-none stroke-brand-slate stroke-2" aria-hidden="true">
+        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-nav" aria-label="Primary mobile" class="hidden border-t border-gray-100 px-6 py-4 lg:hidden">
+    <ul class="flex flex-col gap-3 text-sm font-medium text-brand-slate">
+      <li><a href="/about-us">About Us</a></li>
+      <li>
+        <span class="font-semibold">Paid Search</span>
+        <ul class="mt-2 flex flex-col gap-2 pl-4">
+          {paidSearch.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </li>
+      <li>
+        <span class="font-semibold">Paid Social</span>
+        <ul class="mt-2 flex flex-col gap-2 pl-4">
+          {paidSocial.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </li>
+      <li><a href="/for-agencies">For Agencies</a></li>
+      <li><a href="/training-and-workshops">Training</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact-us" class="font-semibold text-brand-green-dark">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>

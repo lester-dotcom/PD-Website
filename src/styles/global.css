@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto", Arial, ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-green: #aec90b;
+  --color-brand-green-dark: #93aa09;
+  --color-brand-slate: #4c565c;
+  --color-brand-slate-light: #6b767d;
+}
+
+body {
+  font-family: var(--font-sans);
+}

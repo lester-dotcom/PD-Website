@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const reasons = [
+  { title: 'Lower cost per click', description: 'Less competition typically means more efficient acquisition cost than Google alone.' },
+  { title: 'Import & improve', description: 'We import your Google Ads structure and refine it for Microsoft’s audience and auction dynamics.' },
+  { title: 'Incremental reach', description: 'Reach the share of desktop and B2B searchers that Google Ads doesn’t cover.' },
+  { title: 'Audience Network', description: 'Native and display placements across the Microsoft ecosystem, including LinkedIn profile targeting.' },
+];
+---
+
+<BaseLayout
+  title="Microsoft Ads Management"
+  description="Microsoft Ads (Bing) management for brands who want incremental reach and lower cost-per-click alongside their Google Ads activity."
+>
+  <PageHero
+    eyebrow="Paid Search / Microsoft Ads"
+    title="Reach the audience Google Ads misses"
+    description="Microsoft Ads is often overlooked, but it's a genuine incremental channel — usually at a lower cost per click, with unique B2B targeting through LinkedIn profile data."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-8 sm:grid-cols-2">
+      {reasons.map((item) => (
+        <div class="rounded-2xl border border-gray-100 p-6">
+          <h3 class="font-semibold text-brand-slate">{item.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner title="Not running Microsoft Ads yet?" description="Find out what incremental reach could look like for your account." />
+</BaseLayout>

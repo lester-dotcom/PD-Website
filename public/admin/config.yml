@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Netlify Identity + Git Gateway handles auth once this site is deployed on
+# Netlify with Identity enabled. See README.md "Connecting Decap CMS" section.
+
+publish_mode: editorial_workflow
+media_folder: "src/assets/blog"
+public_folder: "/src/assets/blog"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["Paid Search"]
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }

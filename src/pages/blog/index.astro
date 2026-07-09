@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Practical thinking on paid search and paid social from the Pratt Digital team."
+>
+  <PageHero
+    eyebrow="Blog"
+    title="Notes from the account"
+    description="Practical, no-nonsense thinking on paid search and paid social — what's working, what's not, and why."
+  />
+
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <ul class="space-y-10">
+      {posts.map((post) => (
+        <li class="border-b border-gray-100 pb-10">
+          <a href={`/blog/${post.id}`} class="block group">
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-green-dark">
+              {post.data.pubDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <h2 class="mt-2 text-xl font-semibold text-brand-slate group-hover:text-brand-green-dark">
+              {post.data.title}
+            </h2>
+            <p class="mt-2 text-sm text-brand-slate-light">{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

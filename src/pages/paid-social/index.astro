@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const platforms = [
+  { title: 'Meta', href: '/paid-social/meta', description: 'Facebook and Instagram campaigns built on creative testing and clean event tracking.' },
+  { title: 'LinkedIn', href: '/paid-social/linkedin', description: 'B2B lead generation and account-based targeting for considered purchases.' },
+  { title: 'Pinterest', href: '/paid-social/pinterest', description: 'High-intent discovery advertising for retail and lifestyle brands.' },
+  { title: 'Other Channels', href: '/paid-social/other-channels', description: 'TikTok, Snapchat and emerging platforms, evaluated on merit for your audience.' },
+];
+---
+
+<BaseLayout
+  title="Paid Social"
+  description="Paid social management across Meta, LinkedIn, Pinterest and other platforms, built on creative testing and clean conversion tracking."
+>
+  <PageHero
+    eyebrow="Paid Social"
+    title="Creative-led social campaigns that convert"
+    description="Paid social succeeds or fails on creative and tracking. We manage both — testing systematically and making sure the data behind every decision is accurate."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-8 sm:grid-cols-2">
+      {platforms.map((platform) => (
+        <a
+          href={platform.href}
+          class="block rounded-2xl border border-gray-100 p-8 transition hover:border-brand-green hover:shadow-md"
+        >
+          <h3 class="text-lg font-semibold text-brand-slate">{platform.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{platform.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

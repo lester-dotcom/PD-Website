@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const capabilities = [
+  { title: 'Advantage+ campaigns', description: 'Evaluated on real results, not adopted just because Meta recommends it.' },
+  { title: 'Creative testing', description: 'Structured testing across formats and hooks so we know what’s actually driving performance.' },
+  { title: 'Pixel & Conversions API', description: 'Server-side tracking set up correctly for accurate data in an increasingly privacy-restricted world.' },
+  { title: 'Instagram & Facebook', description: 'Placement strategy tailored to where your audience actually spends time.' },
+];
+---
+
+<BaseLayout
+  title="Meta Ads Management"
+  description="Facebook and Instagram advertising management built on creative testing and accurate Pixel and Conversions API tracking."
+>
+  <PageHero
+    eyebrow="Paid Social / Meta"
+    title="Facebook & Instagram advertising, managed properly"
+    description="We manage Meta accounts with a focus on the two things that actually move performance: creative testing and clean conversion tracking."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-8 sm:grid-cols-2">
+      {capabilities.map((item) => (
+        <div class="rounded-2xl border border-gray-100 p-6">
+          <h3 class="font-semibold text-brand-slate">{item.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

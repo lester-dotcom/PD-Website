@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const services = [
+  {
+    title: 'Paid Search',
+    href: '/paid-search',
+    description: 'Google Ads and Microsoft Ads accounts built and managed for efficient, scalable growth.',
+  },
+  {
+    title: 'Paid Social',
+    href: '/paid-social',
+    description: 'Meta, LinkedIn, Pinterest and beyond — creative-led social campaigns that convert.',
+  },
+  {
+    title: 'For Agencies',
+    href: '/for-agencies',
+    description: 'White-label PPC delivery for agencies who want expert management without building an in-house team.',
+  },
+  {
+    title: 'Training & Workshops',
+    href: '/training-and-workshops',
+    description: 'Hands-on PPC training for marketing teams who want to run campaigns in-house with confidence.',
+  },
+];
+
+const pillars = [
+  {
+    title: 'Specialists, not generalists',
+    description: 'Every account is managed by someone who lives in paid media daily, not spread across ten disciplines.',
+  },
+  {
+    title: 'Data over guesswork',
+    description: 'Decisions are backed by conversion data, not platform recommendations taken at face value.',
+  },
+  {
+    title: 'Straight-talking reporting',
+    description: 'Clear monthly reporting that explains what happened, why, and what we are doing next.',
+  },
+];
+---
+
+<BaseLayout
+  title="Paid Search & Paid Social Specialists"
+  description="Pratt Digital is a paid search and paid social agency helping brands and agencies grow with data-led PPC management across Google, Microsoft, Meta, LinkedIn and Pinterest."
+>
+  <section class="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-wide text-brand-green-dark">Pratt Digital</p>
+      <h1 class="mt-3 text-4xl font-bold text-brand-slate sm:text-5xl">
+        PPC management that's actually managed.
+      </h1>
+      <p class="mt-5 text-lg text-brand-slate-light">
+        We plan, build, and optimise paid search and paid social campaigns for brands and agencies who want a
+        specialist on their account — not a junior working from a template.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href="/contact-us"
+          class="rounded-full bg-brand-green px-7 py-3 text-sm font-semibold text-brand-slate transition hover:bg-brand-green-dark"
+        >
+          Get in Touch
+        </a>
+        <a
+          href="/paid-search"
+          class="rounded-full border border-brand-slate/20 px-7 py-3 text-sm font-semibold text-brand-slate transition hover:border-brand-slate/40"
+        >
+          Explore Our Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-gray-100 bg-gray-50">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">What we do</h2>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {services.map((service) => (
+          <a
+            href={service.href}
+            class="block rounded-2xl border border-gray-100 bg-white p-6 transition hover:border-brand-green hover:shadow-md"
+          >
+            <h3 class="font-semibold text-brand-slate">{service.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate-light">{service.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">Why Pratt Digital</h2>
+    <div class="mt-10 grid gap-10 sm:grid-cols-3">
+      {pillars.map((pillar) => (
+        <div>
+          <h3 class="font-semibold text-brand-slate">{pillar.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{pillar.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const workshops = [
+  {
+    title: 'PPC Fundamentals',
+    description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.',
+  },
+  {
+    title: 'Account Audits, Live',
+    description: 'We audit your account in the room, talking through what we find and why it matters.',
+  },
+  {
+    title: 'Advanced Bidding & Automation',
+    description: 'Understand what the platform automation is actually doing, and where to keep control.',
+  },
+  {
+    title: 'Bespoke Team Training',
+    description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.',
+  },
+];
+---
+
+<BaseLayout
+  title="Training and Workshops"
+  description="Hands-on paid search and paid social training and workshops for marketing teams who want to run PPC campaigns in-house with confidence."
+>
+  <PageHero
+    eyebrow="Training & Workshops"
+    title="Build PPC skill in your own team"
+    description="Not every business wants to outsource paid media entirely. We run practical, jargon-free training so your team can plan, build and optimise campaigns with confidence."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-8 sm:grid-cols-2">
+      {workshops.map((workshop) => (
+        <div class="rounded-2xl border border-gray-100 p-6">
+          <h3 class="font-semibold text-brand-slate">{workshop.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{workshop.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Want to train your team?"
+    description="Tell us where your team is now and where you want them to be, and we'll design a session around it."
+  />
+</BaseLayout>
