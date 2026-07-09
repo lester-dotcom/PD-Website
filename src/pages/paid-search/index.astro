@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
-import IconBadge from '../../components/IconBadge.astro';
+import Icon from '../../components/Icon.astro';
 
 const platforms = [
   {
@@ -20,6 +20,11 @@ const platforms = [
     color: 'orange',
   },
 ] as const;
+
+const cardColors = {
+  green: 'bg-brand-green',
+  orange: 'bg-brand-orange',
+} as const;
 ---
 
 <BaseLayout
@@ -28,22 +33,29 @@ const platforms = [
 >
   <PageHero
     eyebrow="Paid Search"
-    title="Search campaigns built on intent, not guesswork"
+    title="Paid Search Management: Built on Intent, Not Guesswork"
     description="We build and manage paid search accounts that capture demand efficiently, structured around your actual sales and lead data, not the platform's default settings."
   />
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-8 sm:grid-cols-2">
-      {platforms.map((platform) => (
-        <a
-          href={platform.href}
-          class="block rounded-2xl border border-gray-100 p-8 transition hover:border-brand-green hover:shadow-md"
-        >
-          <IconBadge icon={platform.icon} color={platform.color} />
-          <h3 class="mt-4 text-lg font-semibold text-brand-slate">{platform.title}</h3>
-          <p class="mt-2 text-sm text-brand-slate-light">{platform.description}</p>
-        </a>
-      ))}
+  <section class="bg-brand-slate">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-8 sm:grid-cols-2">
+        {platforms.map((platform) => (
+          <a
+            href={platform.href}
+            class={`group block rounded-2xl p-8 transition hover:-translate-y-1 hover:shadow-xl ${cardColors[platform.color]}`}
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={platform.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-brand-slate">{platform.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate/75">{platform.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-slate opacity-0 transition group-hover:opacity-100">
+              Learn more →
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

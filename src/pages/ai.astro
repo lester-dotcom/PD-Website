@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-import IconBadge from '../components/IconBadge.astro';
+import Icon from '../components/Icon.astro';
 
 const useCases = [
   {
@@ -30,6 +30,11 @@ const useCases = [
     color: 'orange',
   },
 ] as const;
+
+const cardColors = {
+  green: 'bg-brand-green',
+  orange: 'bg-brand-orange',
+} as const;
 ---
 
 <BaseLayout
@@ -38,20 +43,23 @@ const useCases = [
 >
   <PageHero
     eyebrow="AI"
-    title="AI as a tool, not a replacement for judgement"
+    title="AI in Paid Media: A Tool, Not a Replacement for Judgement"
     description="We use AI tools to work faster and see more, but every recommendation still passes through a specialist before it touches your budget. Here's how we use AI today, and how we're thinking about AI-native ad platforms."
   />
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">How we use AI tools</h2>
-    <div class="mt-10 grid gap-8 sm:grid-cols-2">
-      {useCases.map((item) => (
-        <div class="rounded-2xl border border-gray-100 p-6">
-          <IconBadge icon={item.icon} color={item.color} />
-          <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
-          <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
-        </div>
-      ))}
+  <section class="bg-brand-slate">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {useCases.map((item) => (
+          <div class={`rounded-2xl p-6 ${cardColors[item.color]}`}>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate/75">{item.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

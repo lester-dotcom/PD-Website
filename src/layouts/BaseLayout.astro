@@ -31,6 +31,15 @@ const organizationSchema = {
   logo: new URL('/apple-touch-icon.png', Astro.site).toString(),
   description:
     'Pratt Digital is a paid search and paid social specialist agency helping brands and agencies grow through data-led PPC management.',
+  foundingDate: '2013',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Yew Tree Cottage, Hailsham Road',
+    addressLocality: 'Heathfield',
+    addressRegion: 'East Sussex',
+    postalCode: 'TN21 8AT',
+    addressCountry: 'GB',
+  },
   sameAs: [],
 };
 ---

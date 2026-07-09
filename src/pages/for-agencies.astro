@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-import IconBadge from '../components/IconBadge.astro';
+import Icon from '../components/Icon.astro';
 
 const points = [
   { title: 'White-label delivery', description: 'We work under your brand, reporting through you: your clients never need to know we exist.', icon: 'shield', color: 'green' },
@@ -10,6 +10,11 @@ const points = [
   { title: 'Specialist coverage', description: 'Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest) that you don’t have in-house.', icon: 'layers', color: 'green' },
   { title: 'Flexible engagement', description: 'Scale up or down per account, per month. No long lock-in contracts.', icon: 'target', color: 'orange' },
 ] as const;
+
+const cardColors = {
+  green: 'bg-brand-green',
+  orange: 'bg-brand-orange',
+} as const;
 ---
 
 <BaseLayout
@@ -18,19 +23,23 @@ const points = [
 >
   <PageHero
     eyebrow="For Agencies"
-    title="Extra PPC capacity, without the overhead"
+    title="White-Label PPC for Agencies: Extra Capacity, Without the Overhead"
     description="We deliver white-label paid search and paid social management for agencies who need specialist capacity: for overflow, for a skill gap, or for a client that needs more attention than the current team can give."
   />
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-8 sm:grid-cols-2">
-      {points.map((point) => (
-        <div class="rounded-2xl border border-gray-100 p-6">
-          <IconBadge icon={point.icon} color={point.color} />
-          <h3 class="mt-4 font-semibold text-brand-slate">{point.title}</h3>
-          <p class="mt-2 text-sm text-brand-slate-light">{point.description}</p>
-        </div>
-      ))}
+  <section class="bg-brand-slate">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {points.map((point) => (
+          <div class={`rounded-2xl p-6 ${cardColors[point.color]}`}>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={point.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 font-semibold text-brand-slate">{point.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate/75">{point.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-import IconBadge from '../components/IconBadge.astro';
+import Icon from '../components/Icon.astro';
 
 const workshops = [
   { title: 'PPC Fundamentals', description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.', icon: 'graduation-cap', color: 'green' },
@@ -10,6 +10,11 @@ const workshops = [
   { title: 'Advanced Bidding & Automation', description: 'Understand what the platform automation is actually doing, and where to keep control.', icon: 'chart', color: 'green' },
   { title: 'Bespoke Team Training', description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.', icon: 'users', color: 'orange' },
 ] as const;
+
+const cardColors = {
+  green: 'bg-brand-green',
+  orange: 'bg-brand-orange',
+} as const;
 ---
 
 <BaseLayout
@@ -18,19 +23,23 @@ const workshops = [
 >
   <PageHero
     eyebrow="Training & Workshops"
-    title="Build PPC skill in your own team"
+    title="PPC Training & Workshops: Build Skill in Your Own Team"
     description="Not every business wants to outsource paid media entirely. We run practical, jargon-free training so your team can plan, build and optimise campaigns with confidence."
   />
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-8 sm:grid-cols-2">
-      {workshops.map((workshop) => (
-        <div class="rounded-2xl border border-gray-100 p-6">
-          <IconBadge icon={workshop.icon} color={workshop.color} />
-          <h3 class="mt-4 font-semibold text-brand-slate">{workshop.title}</h3>
-          <p class="mt-2 text-sm text-brand-slate-light">{workshop.description}</p>
-        </div>
-      ))}
+  <section class="bg-brand-slate">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {workshops.map((workshop) => (
+          <div class={`rounded-2xl p-6 ${cardColors[workshop.color]}`}>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={workshop.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 font-semibold text-brand-slate">{workshop.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate/75">{workshop.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

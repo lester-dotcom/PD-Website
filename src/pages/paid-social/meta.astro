@@ -2,13 +2,33 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
-import IconBadge from '../../components/IconBadge.astro';
+import Icon from '../../components/Icon.astro';
+
+const platformCards = [
+  {
+    title: 'Facebook',
+    description: 'Still one of the most efficient prospecting and remarketing channels available, particularly for considered purchases. We build feed, Reels and Marketplace placements around your funnel stage rather than running one generic ad set everywhere.',
+    icon: 'chat',
+    color: 'green',
+  },
+  {
+    title: 'Instagram',
+    description: 'A visual-first platform that rewards strong creative more than any other Meta placement. We prioritise Reels and Stories formats built natively for the platform, not repurposed static ads.',
+    icon: 'sparkles',
+    color: 'orange',
+  },
+] as const;
 
 const sharedCapabilities = [
   { title: 'Creative testing', description: 'Structured testing across formats and hooks so we know what’s actually driving performance.', icon: 'target', color: 'green' },
   { title: 'Pixel & Conversions API', description: 'Server-side tracking set up correctly for accurate data in an increasingly privacy-restricted world.', icon: 'shield', color: 'orange' },
   { title: 'Advantage+ campaigns', description: 'Evaluated on real results, not adopted just because Meta recommends it.', icon: 'sparkles', color: 'green' },
 ] as const;
+
+const cardColors = {
+  green: 'bg-brand-green',
+  orange: 'bg-brand-orange',
+} as const;
 ---
 
 <BaseLayout
@@ -17,39 +37,35 @@ const sharedCapabilities = [
 >
   <PageHero
     eyebrow="Paid Social / Meta"
-    title="Facebook & Instagram advertising, managed properly"
+    title="Meta Ads Management: Facebook & Instagram, Managed Properly"
     description="We manage Meta accounts with a focus on the two things that actually move performance: creative testing and clean conversion tracking, across both Facebook and Instagram."
   />
 
-  <section class="mx-auto max-w-6xl px-6 py-16">
-    <div class="grid gap-8 sm:grid-cols-2">
-      <div class="rounded-2xl border border-gray-100 p-8">
-        <IconBadge icon="chat" color="green" />
-        <h2 class="mt-4 text-lg font-semibold text-brand-slate">Facebook</h2>
-        <p class="mt-3 text-sm text-brand-slate-light">
-          Still one of the most efficient prospecting and remarketing channels available, particularly for
-          considered purchases. We build feed, Reels and Marketplace placements around your funnel stage rather
-          than running one generic ad set everywhere.
-        </p>
+  <section class="bg-brand-slate">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="grid gap-6 sm:grid-cols-2">
+        {platformCards.map((item) => (
+          <div class={`rounded-2xl p-8 ${cardColors[item.color]}`}>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </div>
+            <h2 class="mt-4 text-lg font-semibold text-brand-slate">{item.title}</h2>
+            <p class="mt-3 text-sm text-brand-slate/75">{item.description}</p>
+          </div>
+        ))}
       </div>
-      <div class="rounded-2xl border border-gray-100 p-8">
-        <IconBadge icon="sparkles" color="orange" />
-        <h2 class="mt-4 text-lg font-semibold text-brand-slate">Instagram</h2>
-        <p class="mt-3 text-sm text-brand-slate-light">
-          A visual-first platform that rewards strong creative more than any other Meta placement. We prioritise
-          Reels and Stories formats built natively for the platform, not repurposed static ads.
-        </p>
-      </div>
-    </div>
 
-    <div class="mt-10 grid gap-8 sm:grid-cols-3">
-      {sharedCapabilities.map((item) => (
-        <div class="rounded-2xl border border-gray-100 p-6">
-          <IconBadge icon={item.icon} color={item.color} />
-          <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
-          <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
-        </div>
-      ))}
+      <div class="mt-6 grid gap-6 sm:grid-cols-3">
+        {sharedCapabilities.map((item) => (
+          <div class={`rounded-2xl p-6 ${cardColors[item.color]}`}>
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-slate/75">{item.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
