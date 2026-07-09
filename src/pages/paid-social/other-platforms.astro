@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+---
+
+<BaseLayout
+  title="Other Paid Social Platforms"
+  description="Paid social management on LinkedIn and Pinterest, plus other emerging platforms, evaluated on merit for your audience."
+>
+  <PageHero
+    eyebrow="Paid Social / Other Platforms"
+    title="Beyond Facebook and Instagram"
+    description="Not every audience lives on Meta. Where LinkedIn, Pinterest or another platform genuinely fits your audience, we'll say so — and manage it properly."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16 space-y-16">
+    <div class="grid gap-10 sm:grid-cols-2 sm:items-start">
+      <div>
+        <h2 class="text-xl font-semibold text-brand-slate">LinkedIn</h2>
+        <p class="mt-3 text-sm text-brand-slate-light">
+          The default choice for B2B lead generation and account-based targeting. We use native lead gen forms to
+          cut friction, and target by job title, seniority and named account lists rather than broad industry
+          categories.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold text-brand-slate">Pinterest</h2>
+        <p class="mt-3 text-sm text-brand-slate-light">
+          High-intent discovery advertising, particularly strong for retail and lifestyle brands. Shopping
+          campaigns built from your product feed reach people who are actively planning a purchase, and Pins keep
+          driving traffic well beyond the campaign flight.
+        </p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-100 pt-10 text-brand-slate-light">
+      <h2 class="text-xl font-semibold text-brand-slate">Weighing up a newer platform?</h2>
+      <p class="mt-3 max-w-2xl text-sm">
+        TikTok, Snapchat, Reddit and others come up regularly in planning conversations. We'll assess any of them
+        against your audience and budget honestly — recommending a test only where the fit is genuine, not because
+        it's the newest option on the table.
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

@@ -23,6 +23,11 @@ const services = [
     href: '/training-and-workshops',
     description: 'Hands-on PPC training for marketing teams who want to run campaigns in-house with confidence.',
   },
+  {
+    title: 'AI',
+    href: '/ai',
+    description: 'How we use AI tools day to day, and how we approach emerging AI-native ad platforms like OpenAI Ads.',
+  },
 ];
 
 const pillars = [
@@ -75,7 +80,7 @@ const pillars = [
   <section class="border-t border-gray-100 bg-gray-50">
     <div class="mx-auto max-w-6xl px-6 py-20">
       <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">What we do</h2>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <a
             href={service.href}

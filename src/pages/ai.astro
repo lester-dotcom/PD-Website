@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+
+const useCases = [
+  {
+    title: 'Creative variation at speed',
+    description: 'AI tools help us produce and test more ad copy and creative variants than would be practical manually — the specialist still decides what actually ships.',
+  },
+  {
+    title: 'Faster account analysis',
+    description: 'Surfacing patterns across large accounts quickly, so more time goes into deciding what to do about them rather than digging for them.',
+  },
+  {
+    title: 'Reporting, not busywork',
+    description: 'Automating the repetitive parts of reporting frees up time for the analysis clients actually want to talk about.',
+  },
+  {
+    title: 'Human judgement stays in charge',
+    description: 'AI recommendations and automation are checked against your commercial goals before anything touches live spend — the same standard we hold platform automation to.',
+  },
+];
+---
+
+<BaseLayout
+  title="AI in Paid Media"
+  description="How Pratt Digital uses AI tools in campaign management, and how we're approaching emerging AI advertising channels including OpenAI Ads."
+>
+  <PageHero
+    eyebrow="AI"
+    title="AI as a tool, not a replacement for judgement"
+    description="We use AI tools to work faster and see more — but every recommendation still passes through a specialist before it touches your budget. Here's how we use AI today, and how we're thinking about AI-native ad platforms."
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">How we use AI tools</h2>
+    <div class="mt-10 grid gap-8 sm:grid-cols-2">
+      {useCases.map((item) => (
+        <div class="rounded-2xl border border-gray-100 p-6">
+          <h3 class="font-semibold text-brand-slate">{item.title}</h3>
+          <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-gray-100 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-6 py-16">
+      <h2 class="text-2xl font-bold text-brand-slate sm:text-3xl">OpenAI Ads and AI-native platforms</h2>
+      <div class="mt-6 space-y-4 text-brand-slate-light">
+        <p>
+          Advertising is expanding beyond search and social into AI assistants themselves — including OpenAI's
+          advertising products within ChatGPT. These platforms work differently to the auctions we're used to on
+          Google and Meta, and the audience is reached through conversation rather than a results page or a feed.
+        </p>
+        <p>
+          We're evaluating and testing these channels as they open up, the same way we'd assess any new platform:
+          on merit, for the clients whose audience and product genuinely fit — not as a blanket recommendation
+          because it's new. If you want to know whether an AI-native channel makes sense for your account, that's
+          a conversation we're happy to have.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="Curious how AI fits into your account?"
+    description="Get in touch and we'll talk through where AI tools genuinely help, and where they don't."
+  />
+</BaseLayout>

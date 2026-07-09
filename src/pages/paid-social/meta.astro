@@ -3,11 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 
-const capabilities = [
-  { title: 'Advantage+ campaigns', description: 'Evaluated on real results, not adopted just because Meta recommends it.' },
+const sharedCapabilities = [
   { title: 'Creative testing', description: 'Structured testing across formats and hooks so we know what’s actually driving performance.' },
   { title: 'Pixel & Conversions API', description: 'Server-side tracking set up correctly for accurate data in an increasingly privacy-restricted world.' },
-  { title: 'Instagram & Facebook', description: 'Placement strategy tailored to where your audience actually spends time.' },
+  { title: 'Advantage+ campaigns', description: 'Evaluated on real results, not adopted just because Meta recommends it.' },
 ];
 ---
 
@@ -18,12 +17,30 @@ const capabilities = [
   <PageHero
     eyebrow="Paid Social / Meta"
     title="Facebook & Instagram advertising, managed properly"
-    description="We manage Meta accounts with a focus on the two things that actually move performance: creative testing and clean conversion tracking."
+    description="We manage Meta accounts with a focus on the two things that actually move performance: creative testing and clean conversion tracking, across both Facebook and Instagram."
   />
 
   <section class="mx-auto max-w-6xl px-6 py-16">
     <div class="grid gap-8 sm:grid-cols-2">
-      {capabilities.map((item) => (
+      <div class="rounded-2xl border border-gray-100 p-8">
+        <h2 class="text-lg font-semibold text-brand-slate">Facebook</h2>
+        <p class="mt-3 text-sm text-brand-slate-light">
+          Still one of the most efficient prospecting and remarketing channels available, particularly for
+          considered purchases. We build feed, Reels and Marketplace placements around your funnel stage rather
+          than running one generic ad set everywhere.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-gray-100 p-8">
+        <h2 class="text-lg font-semibold text-brand-slate">Instagram</h2>
+        <p class="mt-3 text-sm text-brand-slate-light">
+          A visual-first platform that rewards strong creative more than any other Meta placement. We prioritise
+          Reels and Stories formats built natively for the platform, not repurposed static ads.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-8 sm:grid-cols-3">
+      {sharedCapabilities.map((item) => (
         <div class="rounded-2xl border border-gray-100 p-6">
           <h3 class="font-semibold text-brand-slate">{item.title}</h3>
           <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
