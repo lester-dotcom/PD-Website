@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
 import IconBadge from '../components/IconBadge.astro';
+import IconCluster from '../components/IconCluster.astro';
+import PlatformBadge from '../components/PlatformBadge.astro';
 
 const services = [
   {
@@ -43,11 +45,11 @@ const services = [
 ] as const;
 
 const channels = [
-  { title: 'Google Ads', description: 'Search, Shopping, Performance Max and YouTube', icon: 'search' },
-  { title: 'Microsoft Ads', description: 'Incremental reach, often at a lower cost per click', icon: 'compass' },
-  { title: 'Meta', description: 'Facebook and Instagram audiences at scale', icon: 'share' },
-  { title: 'LinkedIn', description: 'B2B by job title, seniority and named accounts', icon: 'briefcase' },
-  { title: 'Pinterest', description: 'High-intent shopping and discovery', icon: 'pin' },
+  { title: 'Google Ads', description: 'Search, Shopping, Performance Max and YouTube', platform: 'google' },
+  { title: 'Microsoft Ads', description: 'Incremental reach, often at a lower cost per click', platform: 'bing' },
+  { title: 'Meta', description: 'Facebook and Instagram audiences at scale', platform: 'facebook' },
+  { title: 'LinkedIn', description: 'B2B by job title, seniority and named accounts', platform: 'linkedin' },
+  { title: 'Pinterest', description: 'High-intent shopping and discovery', platform: 'pinterest' },
   { title: 'AI-native platforms', description: 'OpenAI Ads and emerging channels, tested on merit', icon: 'sparkles' },
 ] as const;
 
@@ -110,28 +112,7 @@ const cardColors = {
       </div>
 
       <div class="relative hidden h-80 lg:block" aria-hidden="true">
-        <svg viewBox="0 0 400 320" class="h-full w-full">
-          <circle cx="330" cy="60" r="70" fill="var(--color-brand-green)" opacity="0.12" />
-          <circle cx="70" cy="260" r="90" fill="var(--color-brand-orange)" opacity="0.12" />
-          <g stroke="var(--color-brand-slate)" stroke-width="1.5" opacity="0.25">
-            <circle cx="200" cy="160" r="4" fill="var(--color-brand-slate)" />
-            <circle cx="240" cy="120" r="4" fill="var(--color-brand-slate)" />
-            <circle cx="280" cy="150" r="4" fill="var(--color-brand-slate)" />
-            <circle cx="150" cy="110" r="4" fill="var(--color-brand-slate)" />
-            <line x1="200" y1="160" x2="240" y2="120" />
-            <line x1="240" y1="120" x2="280" y2="150" />
-            <line x1="200" y1="160" x2="150" y2="110" />
-          </g>
-          <polyline
-            points="60,240 130,200 190,220 250,140 340,90"
-            fill="none"
-            stroke="var(--color-brand-green-dark)"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <circle cx="340" cy="90" r="6" fill="var(--color-brand-orange)" />
-        </svg>
+        <IconCluster />
       </div>
     </div>
   </section>
@@ -185,7 +166,11 @@ const cardColors = {
       <div class="grid divide-y divide-gray-100 overflow-hidden rounded-2xl border border-gray-100 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
         {channels.map((channel) => (
           <div class="flex gap-3 p-6">
-            <Icon name={channel.icon} class="mt-0.5 h-5 w-5 shrink-0 text-brand-green-dark" />
+            {'platform' in channel ? (
+              <PlatformBadge platform={channel.platform} class="mt-0.5 h-5 w-5 shrink-0 text-brand-green-dark" />
+            ) : (
+              <Icon name={channel.icon} class="mt-0.5 h-5 w-5 shrink-0 text-brand-green-dark" />
+            )}
             <div>
               <h3 class="font-semibold text-brand-slate">{channel.title}</h3>
               <p class="mt-1 text-sm text-brand-slate-light">{channel.description}</p>

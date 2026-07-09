@@ -3,18 +3,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
+import PlatformBadge from '../../components/PlatformBadge.astro';
 
 const platformCards = [
   {
     title: 'Facebook',
     description: 'Still one of the most efficient prospecting and remarketing channels available, particularly for considered purchases. We build feed, Reels and Marketplace placements around your funnel stage rather than running one generic ad set everywhere.',
-    icon: 'chat',
+    platform: 'facebook',
     color: 'green',
   },
   {
     title: 'Instagram',
     description: 'A visual-first platform that rewards strong creative more than any other Meta placement. We prioritise Reels and Stories formats built natively for the platform, not repurposed static ads.',
-    icon: 'sparkles',
+    platform: 'instagram',
     color: 'orange',
   },
 ] as const;
@@ -47,7 +48,7 @@ const cardColors = {
         {platformCards.map((item) => (
           <div class={`rounded-2xl p-8 ${cardColors[item.color]}`}>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
-              <Icon name={item.icon} class="h-6 w-6" />
+              <PlatformBadge platform={item.platform} class="h-6 w-6" />
             </div>
             <h2 class="mt-4 text-lg font-semibold text-brand-slate">{item.title}</h2>
             <p class="mt-3 text-sm text-brand-slate/75">{item.description}</p>

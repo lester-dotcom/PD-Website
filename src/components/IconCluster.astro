@@ -1,0 +1,119 @@
+---
+import { iconPaths, type IconName } from '../lib/icon-paths';
+
+export interface CircleSpec {
+  cx: number;
+  cy: number;
+  r: number;
+  variant: 'fill-green' | 'fill-orange' | 'fill-slate' | 'outline-green' | 'outline-orange';
+  icon?: IconName;
+  letter?: string;
+}
+
+interface Props {
+  class?: string;
+  viewBox?: string;
+  circles?: CircleSpec[];
+}
+
+// Scattered circle-badge composition inspired by Pratt Digital's own office wall graphic.
+export const heroCluster: CircleSpec[] = [
+  { cx: 30, cy: 310, r: 22, variant: 'outline-orange', icon: 'hashtag' },
+  { cx: 85, cy: 260, r: 28, variant: 'outline-green', icon: 'search' },
+  { cx: 140, cy: 225, r: 19, variant: 'fill-slate', letter: 'b' },
+  { cx: 185, cy: 255, r: 21, variant: 'outline-green', icon: 'target' },
+  { cx: 100, cy: 195, r: 6, variant: 'fill-orange' },
+  { cx: 235, cy: 205, r: 32, variant: 'fill-orange', icon: 'megaphone' },
+  { cx: 283, cy: 155, r: 17, variant: 'fill-slate', letter: 'in' },
+  { cx: 315, cy: 200, r: 23, variant: 'outline-green', icon: 'heart' },
+  { cx: 340, cy: 135, r: 7, variant: 'fill-green' },
+  { cx: 365, cy: 210, r: 19, variant: 'fill-slate', icon: 'instagram' },
+  { cx: 395, cy: 170, r: 25, variant: 'outline-orange', icon: 'share' },
+  { cx: 420, cy: 115, r: 18, variant: 'fill-green', icon: 'chart' },
+  { cx: 445, cy: 150, r: 13, variant: 'fill-orange', letter: 'G' },
+  { cx: 410, cy: 55, r: 55, variant: 'fill-green', icon: 'sparkles' },
+  { cx: 55, cy: 345, r: 4, variant: 'fill-slate' },
+  { cx: 200, cy: 330, r: 5, variant: 'fill-green' },
+  { cx: 380, cy: 270, r: 4, variant: 'fill-orange' },
+  { cx: 460, cy: 210, r: 5, variant: 'fill-slate' },
+];
+
+export const cornerCluster: CircleSpec[] = [
+  { cx: 40, cy: 70, r: 34, variant: 'fill-green', icon: 'sparkles' },
+  { cx: 95, cy: 30, r: 16, variant: 'fill-slate', letter: 'f' },
+  { cx: 130, cy: 75, r: 20, variant: 'outline-orange', icon: 'share' },
+  { cx: 20, cy: 25, r: 5, variant: 'fill-orange' },
+  { cx: 145, cy: 25, r: 4, variant: 'fill-green' },
+];
+
+const { class: className = 'h-full w-full', viewBox = '0 0 480 360', circles = heroCluster } = Astro.props;
+
+const fill = {
+  'fill-green': 'var(--color-brand-green)',
+  'fill-orange': 'var(--color-brand-orange)',
+  'fill-slate': 'var(--color-brand-slate)',
+  'outline-green': 'none',
+  'outline-orange': 'none',
+} as const;
+
+const strokeColor = {
+  'fill-green': 'none',
+  'fill-orange': 'none',
+  'fill-slate': 'none',
+  'outline-green': 'var(--color-brand-green)',
+  'outline-orange': 'var(--color-brand-orange)',
+} as const;
+
+const glyphColor = {
+  'fill-green': 'white',
+  'fill-orange': 'white',
+  'fill-slate': 'white',
+  'outline-green': 'var(--color-brand-green)',
+  'outline-orange': 'var(--color-brand-orange)',
+} as const;
+---
+
+<svg viewBox={viewBox} class={className} aria-hidden="true">
+  {circles.map((c) => {
+    const isOutline = c.variant.startsWith('outline');
+    const iconSize = c.r * 1.15;
+    return (
+      <g>
+        <circle
+          cx={c.cx}
+          cy={c.cy}
+          r={c.r}
+          fill={fill[c.variant]}
+          stroke={strokeColor[c.variant]}
+          stroke-width={isOutline ? Math.max(1.5, c.r * 0.09) : 0}
+        />
+        {c.icon && (
+          <g transform={`translate(${c.cx - iconSize / 2}, ${c.cy - iconSize / 2}) scale(${iconSize / 24})`}>
+            <path
+              d={iconPaths[c.icon]}
+              fill="none"
+              stroke={glyphColor[c.variant]}
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+        )}
+        {c.letter && (
+          <text
+            x={c.cx}
+            y={c.cy}
+            text-anchor="middle"
+            dominant-baseline="central"
+            font-family="Roboto, Arial, sans-serif"
+            font-weight="700"
+            font-size={c.r * (c.letter.length > 1 ? 0.75 : 1)}
+            fill={glyphColor[c.variant]}
+          >
+            {c.letter}
+          </text>
+        )}
+      </g>
+    );
+  })}
+</svg>

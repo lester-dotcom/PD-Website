@@ -3,12 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
+import PlatformBadge from '../../components/PlatformBadge.astro';
 
 const reasons = [
   { title: 'Lower cost per click', description: 'Less competition typically means more efficient acquisition cost than Google alone.', icon: 'chart', color: 'green' },
   { title: 'Import & improve', description: 'We import your Google Ads structure and refine it for Microsoft’s audience and auction dynamics.', icon: 'layers', color: 'orange' },
   { title: 'Incremental reach', description: 'Reach the share of desktop and B2B searchers that Google Ads doesn’t cover.', icon: 'compass', color: 'green' },
-  { title: 'Audience Network', description: 'Native and display placements across the Microsoft ecosystem, including LinkedIn profile targeting.', icon: 'share', color: 'orange' },
+  { title: 'Audience Network', description: 'Native and display placements across the Microsoft ecosystem, including LinkedIn profile targeting.', platform: 'linkedin', color: 'orange' },
 ] as const;
 
 const cardColors = {
@@ -25,6 +26,7 @@ const cardColors = {
     eyebrow="Paid Search / Microsoft Ads"
     title="Microsoft Ads Management: Reach the Audience Google Ads Misses"
     description="Microsoft Ads is often overlooked, but it's a genuine incremental channel, usually at a lower cost per click, with unique B2B targeting through LinkedIn profile data."
+    platform="bing"
   />
 
   <section class="bg-brand-slate">
@@ -33,7 +35,11 @@ const cardColors = {
         {reasons.map((item) => (
           <div class={`rounded-2xl p-6 ${cardColors[item.color]}`}>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
-              <Icon name={item.icon} class="h-6 w-6" />
+              {'platform' in item ? (
+                <PlatformBadge platform={item.platform} class="h-6 w-6" />
+              ) : (
+                <Icon name={item.icon} class="h-6 w-6" />
+              )}
             </div>
             <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
             <p class="mt-2 text-sm text-brand-slate/75">{item.description}</p>

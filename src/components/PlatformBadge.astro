@@ -1,0 +1,52 @@
+---
+import { iconPaths } from '../lib/icon-paths';
+
+export type PlatformName = 'google' | 'bing' | 'facebook' | 'instagram' | 'linkedin' | 'pinterest' | 'youtube';
+
+interface Props {
+  platform: PlatformName;
+  class?: string;
+}
+
+const { platform, class: className = 'h-6 w-6' } = Astro.props;
+
+const letters: Partial<Record<PlatformName, string>> = {
+  google: 'G',
+  bing: 'b',
+  facebook: 'f',
+  linkedin: 'in',
+  pinterest: 'P',
+};
+
+const letter = letters[platform];
+---
+
+{letter ? (
+  <svg viewBox="0 0 24 24" class={className} aria-hidden="true">
+    <text
+      x="12"
+      y="13"
+      text-anchor="middle"
+      dominant-baseline="central"
+      font-family="Roboto, Arial, sans-serif"
+      font-weight="700"
+      font-size={letter.length > 1 ? 10.5 : 15}
+      fill="currentColor"
+    >
+      {letter}
+    </text>
+  </svg>
+) : (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class={className}
+    aria-hidden="true"
+  >
+    <path d={iconPaths[platform]} />
+  </svg>
+)}

@@ -3,11 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
+import PlatformBadge from '../../components/PlatformBadge.astro';
 
 const capabilities = [
   { title: 'Search', description: 'Keyword-led campaigns matched to real commercial intent.', icon: 'search', color: 'green' },
   { title: 'Shopping & Performance Max', description: 'Feed optimisation and structure that gives you visibility into what PMax is actually doing.', icon: 'layers', color: 'orange' },
-  { title: 'YouTube', description: 'Video campaigns for awareness and remarketing that tie back to conversion data.', icon: 'chart', color: 'green' },
+  { title: 'YouTube', description: 'Video campaigns for awareness and remarketing that tie back to conversion data.', platform: 'youtube', color: 'green' },
   { title: 'Conversion tracking', description: 'Server-side and enhanced conversions set up properly, not left on platform defaults.', icon: 'shield', color: 'orange' },
 ] as const;
 
@@ -25,6 +26,7 @@ const cardColors = {
     eyebrow="Paid Search / Google Ads"
     title="Google Ads Management: A Specialist on Every Account"
     description="From Search and Shopping through to Performance Max and YouTube, we manage Google Ads accounts around your real sales data, not the recommendations tab."
+    platform="google"
   />
 
   <section class="bg-brand-slate">
@@ -33,7 +35,11 @@ const cardColors = {
         {capabilities.map((item) => (
           <div class={`rounded-2xl p-6 ${cardColors[item.color]}`}>
             <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
-              <Icon name={item.icon} class="h-6 w-6" />
+              {'platform' in item ? (
+                <PlatformBadge platform={item.platform} class="h-6 w-6" />
+              ) : (
+                <Icon name={item.icon} class="h-6 w-6" />
+              )}
             </div>
             <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
             <p class="mt-2 text-sm text-brand-slate/75">{item.description}</p>
