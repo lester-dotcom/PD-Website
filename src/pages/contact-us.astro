@@ -1,16 +1,18 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { cornerSocial } from '../components/IconCluster.astro';
+
+const page = await getEntry('pages', 'contact-us');
+if (!page) throw new Error('Missing pages/contact-us.yaml content entry');
+const { title, metaDescription, hero } = page.data;
 ---
-<BaseLayout
-  title="Contact Us"
-  description="Get in touch with Pratt Digital to talk about your paid search and paid social campaigns."
->
+<BaseLayout title={title} description={metaDescription}>
   <PageHero
-    eyebrow="Contact Us"
-    title="Contact Pratt Digital: Let's Talk About Your Account"
-    description="Tell us a bit about what you're running today and what you'd like to achieve. We'll come back with honest thoughts, not a sales script."
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
     cluster={cornerSocial}
   />
 

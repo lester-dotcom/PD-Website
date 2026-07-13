@@ -1,0 +1,39 @@
+title: "About Us"
+metaDescription: "Pratt Digital is an independent paid search and paid social agency. Learn who we are, how we work, and why clients stay with us for the long term."
+hero:
+  eyebrow: "About Us"
+  title: "About Pratt Digital: A Specialist Team, Not an Account Factory"
+  description: "Pratt Digital was built on a simple idea: PPC works best when it's managed by people who specialise in it, and who stay on your account long enough to actually understand your business."
+blocks:
+  - type: text
+    background: white
+    body: |-
+      We're an independent paid media agency working across Google Ads, Microsoft Ads, Meta, LinkedIn and Pinterest. No junior account managers cutting their teeth on your budget, no template strategies copied from client to client. Every account gets a specialist who understands the platform and the numbers behind it.
+
+      We work with brands who manage their paid media in-house and want an expert partner, and with agencies who need reliable white-label PPC delivery without building the capability internally.
+  - type: processSteps
+    eyebrow: "How we work"
+    heading: "Not like most other *paid media agencies.*"
+    note: "Working with brands and agencies across the UK. No lock-ins: we earn the right to keep managing your account every month."
+    steps:
+      - title: "Free audit"
+        description: "We dig into your account, competitors and market. You get a written breakdown you can keep, no obligation."
+      - title: "Build & launch"
+        description: "Structure, keywords, creative and tracking, done properly. Most accounts are live within two weeks."
+      - title: "Optimise & scale"
+        description: "Weekly bid, creative and landing-page tests. Monthly strategy calls in plain English. Scale what wins."
+  - type: teamBios
+    eyebrow: "The Directors"
+    heading: "Founded in 2013, *still hands-on today.*"
+    members:
+      - name: "Amelia Pratt"
+        role: "Co-Founder & Director"
+        photoKey: amelia
+        bio: "With deep-rooted paid search and marketing experience stretching back to the early days of search, Amelia has been digitally evolving right alongside the platforms she manages. Before founding Pratt Digital in 2013, she worked with some of London's top search agencies, including i-Level and Leapfrogg. Her strategic approach is built fresh for every account, blending creativity with a relentless focus on the data."
+      - name: "Lester Pratt"
+        role: "Co-Founder & Director"
+        photoKey: lester
+        bio: "Twenty years in senior retail management gave Lester an analytical streak and a head for numbers most agency owners would envy. Since joining Pratt Digital, he has put his creative side to work across a wide range of successful campaigns, and genuinely enjoys the challenge of writing ad copy that actually earns the click."
+  - type: cta
+    title: "Want to know more?"
+    description: "Get in touch and we'll walk you through how we work."

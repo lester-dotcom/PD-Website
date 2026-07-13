@@ -1,74 +1,23 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import CtaBanner from '../../components/CtaBanner.astro';
-import PlatformLogo from '../../components/PlatformLogo.astro';
+import BlockRenderer from '../../components/BlockRenderer.astro';
 import { cornerSearch } from '../../components/IconCluster.astro';
 
-const platforms = [
-  {
-    title: 'Google Ads',
-    href: '/paid-search/google-ads',
-    description: 'Search, Shopping, Performance Max and YouTube campaigns built around real commercial intent.',
-    platform: 'google',
-    color: 'green',
-  },
-  {
-    title: 'Microsoft Ads',
-    href: '/paid-search/microsoft-ads',
-    description: 'Reach the audience Google can’t, often at a lower cost per click.',
-    platform: 'bing',
-    color: 'orange',
-  },
-] as const;
-
-const borderColors = {
-  green: 'border-brand-green',
-  orange: 'border-brand-orange',
-} as const;
+const page = await getEntry('pages', 'paid-search');
+if (!page) throw new Error('Missing pages/paid-search.yaml content entry');
+const { title, metaDescription, hero, blocks } = page.data;
 ---
 
-<BaseLayout
-  title="Paid Search"
-  description="Paid search management across Google Ads and Microsoft Ads, built around conversion data and commercial goals rather than platform defaults."
->
+<BaseLayout title={title} description={metaDescription}>
   <PageHero
-    eyebrow="Paid Search"
-    title="Paid Search Management: Built on Intent, Not Guesswork"
-    description="We build and manage paid search accounts that capture demand efficiently, structured around your actual sales and lead data, not the platform's default settings."
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
     cluster={cornerSearch}
     anchorLogo="google"
   />
 
-  <section class="bg-brand-slate">
-    <div class="mx-auto max-w-6xl px-6 py-20">
-      <div class="grid gap-8 sm:grid-cols-2">
-        {platforms.map((platform) => (
-          <a
-            href={platform.href}
-            class={`group block rounded-2xl border-2 bg-white p-8 transition hover:-translate-y-1 hover:shadow-lg ${borderColors[platform.color]}`}
-          >
-            <PlatformLogo platform={platform.platform} class="h-8 w-auto" />
-            <p class="mt-4 text-sm text-brand-slate-light">{platform.description}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-green-dark opacity-0 transition group-hover:opacity-100">
-              Learn more →
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="border-t border-gray-100 bg-gray-50">
-    <div class="mx-auto max-w-3xl px-6 py-16 text-brand-slate-light">
-      <h2 class="text-xl font-semibold text-brand-slate">How we approach paid search</h2>
-      <p class="mt-4">
-        Every account starts with a structural and tracking audit: no changes get made until we know conversion
-        data is accurate. From there we build campaigns around your margins and sales cycle, not around what the
-        platform thinks "good" looks like.
-      </p>
-    </div>
-  </section>
-
-  <CtaBanner />
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

@@ -32,6 +32,236 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "src/content/pages/homepage.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - label: "Heading"
+                name: "title"
+                widget: "string"
+                hint: "Wrap a word or phrase in *asterisks* to italicise it, e.g. actually *managed*."
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Primary Button"
+                name: "primaryButton"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Button Text", name: "text", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+              - label: "Secondary Button"
+                name: "secondaryButton"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Button Text", name: "text", widget: "string" }
+                  - { label: "Link", name: "href", widget: "string" }
+          - &blocksField
+            label: "Content Blocks"
+            name: "blocks"
+            widget: "list"
+            types: &blockTypes
+              - label: "Feature Grid"
+                name: "featureGrid"
+                widget: "object"
+                summary: "Feature Grid ({{fields.items}} cards)"
+                fields:
+                  - { label: "Eyebrow (optional)", name: "eyebrow", widget: "string", required: false }
+                  - label: "Heading (optional)"
+                    name: "heading"
+                    widget: "string"
+                    required: false
+                    hint: "Wrap a word or phrase in *asterisks* to italicise it."
+                  - label: "Columns"
+                    name: "columns"
+                    widget: "select"
+                    options: [{ label: "2", value: 2 }, { label: "3", value: 3 }]
+                    default: 2
+                  - label: "Card Style"
+                    name: "cardStyle"
+                    widget: "select"
+                    options: [{ label: "Bordered card", value: "bordered" }, { label: "Plain (no card)", value: "plain" }]
+                    default: "bordered"
+                  - label: "Background"
+                    name: "background"
+                    widget: "select"
+                    options: [{ label: "Slate (dark)", value: "slate" }, { label: "White", value: "white" }, { label: "Light Grey", value: "gray" }]
+                    default: "slate"
+                  - label: "Cards"
+                    name: "items"
+                    widget: "list"
+                    summary: "{{title}}"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Icon"
+                        name: "icon"
+                        widget: "select"
+                        required: false
+                        options:
+                          [
+                            "search", "share", "users", "graduation-cap", "sparkles", "chart",
+                            "megaphone", "pin", "briefcase", "chat", "target", "layers", "shield",
+                            "compass", "hashtag", "heart", "arrow-forward", "instagram", "youtube",
+                            "eye", "thumbsup", "gear",
+                          ]
+                      - label: "Platform (overrides icon)"
+                        name: "platform"
+                        widget: "select"
+                        required: false
+                        options: ["google", "bing", "facebook", "instagram", "linkedin", "pinterest", "youtube"]
+                      - label: "Platform Logo Style"
+                        name: "logoStyle"
+                        widget: "select"
+                        options: [{ label: "Small badge", value: "badge" }, { label: "Full logo", value: "full" }]
+                        default: "badge"
+                      - { label: "Link (optional, makes card clickable)", name: "href", widget: "string", required: false }
+                      - label: "Colour"
+                        name: "color"
+                        widget: "select"
+                        options: ["green", "orange"]
+                        default: "green"
+              - label: "CTA Banner"
+                name: "cta"
+                widget: "object"
+                summary: "CTA: {{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Text Section"
+                name: "text"
+                widget: "object"
+                summary: "Text: {{fields.heading}}"
+                fields:
+                  - { label: "Heading (optional)", name: "heading", widget: "string", required: false }
+                  - { label: "Body", name: "body", widget: "text" }
+                  - label: "Background"
+                    name: "background"
+                    widget: "select"
+                    options: [{ label: "Slate (dark)", value: "slate" }, { label: "White", value: "white" }, { label: "Light Grey", value: "gray" }]
+                    default: "gray"
+                  - label: "Icon (optional)"
+                    name: "icon"
+                    widget: "select"
+                    required: false
+                    options:
+                      [
+                        "search", "share", "users", "graduation-cap", "sparkles", "chart",
+                        "megaphone", "pin", "briefcase", "chat", "target", "layers", "shield",
+                        "compass", "hashtag", "heart", "arrow-forward", "instagram", "youtube",
+                        "eye", "thumbsup", "gear",
+                      ]
+              - label: "Channels List"
+                name: "channelsList"
+                widget: "object"
+                summary: "Channels: {{fields.heading}}"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - label: "Heading"
+                    name: "heading"
+                    widget: "string"
+                    hint: "Wrap a word or phrase in *asterisks* to italicise it."
+                  - { label: "Intro Text", name: "intro", widget: "text" }
+                  - label: "Channels"
+                    name: "items"
+                    widget: "list"
+                    summary: "{{title}}"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Icon (used if no platform set)"
+                        name: "icon"
+                        widget: "select"
+                        required: false
+                        options:
+                          [
+                            "search", "share", "users", "graduation-cap", "sparkles", "chart",
+                            "megaphone", "pin", "briefcase", "chat", "target", "layers", "shield",
+                            "compass", "hashtag", "heart", "arrow-forward", "instagram", "youtube",
+                            "eye", "thumbsup", "gear",
+                          ]
+                      - label: "Platform"
+                        name: "platform"
+                        widget: "select"
+                        required: false
+                        options: ["google", "bing", "facebook", "instagram", "linkedin", "pinterest", "youtube"]
+              - label: "Team Bios"
+                name: "teamBios"
+                widget: "object"
+                summary: "Team: {{fields.heading}}"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - label: "Heading"
+                    name: "heading"
+                    widget: "string"
+                    hint: "Wrap a word or phrase in *asterisks* to italicise it."
+                  - label: "Team Members"
+                    name: "members"
+                    widget: "list"
+                    summary: "{{name}}"
+                    fields:
+                      - { label: "Name", name: "name", widget: "string" }
+                      - { label: "Role", name: "role", widget: "string" }
+                      - label: "Photo"
+                        name: "photoKey"
+                        widget: "select"
+                        options: ["amelia", "lester"]
+                      - { label: "Bio", name: "bio", widget: "text" }
+              - label: "Process Steps"
+                name: "processSteps"
+                widget: "object"
+                summary: "Process: {{fields.heading}}"
+                fields:
+                  - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+                  - label: "Heading"
+                    name: "heading"
+                    widget: "string"
+                    hint: "Wrap a word or phrase in *asterisks* to italicise it."
+                  - { label: "Note", name: "note", widget: "text" }
+                  - label: "Steps"
+                    name: "steps"
+                    widget: "list"
+                    summary: "{{title}}"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+
+      - name: "about-us"
+        label: "About Us"
+        file: "src/content/pages/about-us.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "contact-us"
+        label: "Contact Us"
+        file: "src/content/pages/contact-us.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
       - name: "for-agencies"
         label: "For Agencies"
         file: "src/content/pages/for-agencies.yaml"
@@ -45,47 +275,133 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-          - label: "Content Blocks"
-            name: "blocks"
-            widget: "list"
-            types:
-              - label: "Feature Grid"
-                name: "featureGrid"
-                widget: "object"
-                summary: "Feature Grid ({{fields.items}} cards)"
-                fields:
-                  - label: "Cards"
-                    name: "items"
-                    widget: "list"
-                    summary: "{{title}}"
-                    fields:
-                      - { label: "Title", name: "title", widget: "string" }
-                      - { label: "Description", name: "description", widget: "text" }
-                      - label: "Icon"
-                        name: "icon"
-                        widget: "select"
-                        options:
-                          [
-                            "search", "share", "users", "graduation-cap", "sparkles", "chart",
-                            "megaphone", "pin", "briefcase", "chat", "target", "layers", "shield",
-                            "compass", "hashtag", "heart", "arrow-forward", "instagram", "youtube",
-                            "eye", "thumbsup", "gear",
-                          ]
-                      - label: "Colour"
-                        name: "color"
-                        widget: "select"
-                        options: ["green", "orange"]
-              - label: "CTA Banner"
-                name: "cta"
-                widget: "object"
-                summary: "CTA: {{fields.title}}"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "text" }
-              - label: "Text Section"
-                name: "text"
-                widget: "object"
-                summary: "Text: {{fields.heading}}"
-                fields:
-                  - { label: "Heading", name: "heading", widget: "string", required: false }
-                  - { label: "Body", name: "body", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-search"
+        label: "Paid Search"
+        file: "src/content/pages/paid-search.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-search-google-ads"
+        label: "Paid Search: Google Ads"
+        file: "src/content/pages/paid-search-google-ads.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-search-microsoft-ads"
+        label: "Paid Search: Microsoft Ads"
+        file: "src/content/pages/paid-search-microsoft-ads.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-social"
+        label: "Paid Social"
+        file: "src/content/pages/paid-social.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-social-meta"
+        label: "Paid Social: Meta"
+        file: "src/content/pages/paid-social-meta.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "paid-social-other-platforms"
+        label: "Paid Social: Other Platforms"
+        file: "src/content/pages/paid-social-other-platforms.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "training-and-workshops"
+        label: "Training and Workshops"
+        file: "src/content/pages/training-and-workshops.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes
+
+      - name: "ai"
+        label: "AI"
+        file: "src/content/pages/ai.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - <<: *blocksField
+            types: *blockTypes

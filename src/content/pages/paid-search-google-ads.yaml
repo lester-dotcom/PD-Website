@@ -1,0 +1,31 @@
+title: "Google Ads Management"
+metaDescription: "Google Ads management covering Search, Shopping, Performance Max and YouTube, built on accurate conversion tracking and managed by a specialist."
+hero:
+  eyebrow: "Paid Search / Google Ads"
+  title: "Google Ads Management: A Specialist on Every Account"
+  description: "From Search and Shopping through to Performance Max and YouTube, we manage Google Ads accounts around your real sales data, not the recommendations tab."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Search"
+        description: "Keyword-led campaigns matched to real commercial intent."
+        icon: search
+        color: green
+      - title: "Shopping & Performance Max"
+        description: "Feed optimisation and structure that gives you visibility into what PMax is actually doing."
+        icon: layers
+        color: orange
+      - title: "YouTube"
+        description: "Video campaigns for awareness and remarketing that tie back to conversion data."
+        platform: youtube
+        color: green
+      - title: "Conversion tracking"
+        description: "Server-side and enhanced conversions set up properly, not left on platform defaults."
+        icon: shield
+        color: orange
+  - type: cta
+    title: "Want a second opinion on your Google Ads account?"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."

@@ -1,0 +1,40 @@
+title: "Meta Ads Management"
+metaDescription: "Facebook and Instagram advertising management built on creative testing and accurate Pixel and Conversions API tracking."
+hero:
+  eyebrow: "Paid Social / Meta"
+  title: "Meta Ads Management: Facebook & Instagram, Managed Properly"
+  description: "We manage Meta accounts with a focus on the two things that actually move performance: creative testing and clean conversion tracking, across both Facebook and Instagram."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Facebook"
+        description: "Still one of the most efficient prospecting and remarketing channels available, particularly for considered purchases. We build feed, Reels and Marketplace placements around your funnel stage rather than running one generic ad set everywhere."
+        platform: facebook
+        color: green
+      - title: "Instagram"
+        description: "A visual-first platform that rewards strong creative more than any other Meta placement. We prioritise Reels and Stories formats built natively for the platform, not repurposed static ads."
+        platform: instagram
+        color: orange
+  - type: featureGrid
+    columns: 3
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Creative testing"
+        description: "Structured testing across formats and hooks so we know what's actually driving performance."
+        icon: target
+        color: green
+      - title: "Pixel & Conversions API"
+        description: "Server-side tracking set up correctly for accurate data in an increasingly privacy-restricted world."
+        icon: shield
+        color: orange
+      - title: "Advantage+ campaigns"
+        description: "Evaluated on real results, not adopted just because Meta recommends it."
+        icon: sparkles
+        color: green
+  - type: cta
+    title: "Let's talk about your account"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."

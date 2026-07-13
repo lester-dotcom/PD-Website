@@ -1,61 +1,24 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
-import CtaBanner from '../../components/CtaBanner.astro';
-import Icon from '../../components/Icon.astro';
-import PlatformBadge from '../../components/PlatformBadge.astro';
+import BlockRenderer from '../../components/BlockRenderer.astro';
 import { cornerSearch } from '../../components/IconCluster.astro';
 
-const capabilities = [
-  { title: 'Search', description: 'Keyword-led campaigns matched to real commercial intent.', icon: 'search', color: 'green' },
-  { title: 'Shopping & Performance Max', description: 'Feed optimisation and structure that gives you visibility into what PMax is actually doing.', icon: 'layers', color: 'orange' },
-  { title: 'YouTube', description: 'Video campaigns for awareness and remarketing that tie back to conversion data.', platform: 'youtube', color: 'green' },
-  { title: 'Conversion tracking', description: 'Server-side and enhanced conversions set up properly, not left on platform defaults.', icon: 'shield', color: 'orange' },
-] as const;
-
-const borderColors = {
-  green: 'border-brand-green',
-  orange: 'border-brand-orange',
-} as const;
-
-const badgeColors = {
-  green: 'bg-brand-green/10 text-brand-green-dark',
-  orange: 'bg-brand-orange/10 text-brand-orange-dark',
-} as const;
+const page = await getEntry('pages', 'paid-search-google-ads');
+if (!page) throw new Error('Missing pages/paid-search-google-ads.yaml content entry');
+const { title, metaDescription, hero, blocks } = page.data;
 ---
 
-<BaseLayout
-  title="Google Ads Management"
-  description="Google Ads management covering Search, Shopping, Performance Max and YouTube, built on accurate conversion tracking and managed by a specialist."
->
+<BaseLayout title={title} description={metaDescription}>
   <PageHero
-    eyebrow="Paid Search / Google Ads"
-    title="Google Ads Management: A Specialist on Every Account"
-    description="From Search and Shopping through to Performance Max and YouTube, we manage Google Ads accounts around your real sales data, not the recommendations tab."
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
     platform="google"
     cluster={cornerSearch}
     anchorLogo="google"
   />
 
-  <section class="bg-brand-slate">
-    <div class="mx-auto max-w-6xl px-6 py-20">
-      <div class="grid gap-6 sm:grid-cols-2">
-        {capabilities.map((item) => (
-          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[item.color]}`}>
-            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[item.color]}`}>
-              {'platform' in item ? (
-                <PlatformBadge platform={item.platform} class="h-6 w-6" />
-              ) : (
-                <Icon name={item.icon} class="h-6 w-6" />
-              )}
-            </div>
-            <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <CtaBanner title="Want a second opinion on your Google Ads account?" />
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

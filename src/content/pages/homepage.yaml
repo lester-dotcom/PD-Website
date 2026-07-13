@@ -1,0 +1,89 @@
+title: "Paid Search & Paid Social Specialists"
+metaDescription: "Pratt Digital is a paid search and paid social agency helping brands and agencies grow with data-led PPC management across Google, Microsoft, Meta, LinkedIn and Pinterest."
+hero:
+  eyebrow: "Pratt Digital"
+  title: "PPC management that's actually *managed*."
+  description: "We plan, build, and optimise paid search and paid social campaigns for brands and agencies who want a specialist on their account, not a junior working from a template."
+  primaryButton:
+    text: "Get in Touch"
+    href: "/contact-us"
+  secondaryButton:
+    text: "Explore Our Services"
+    href: "/paid-search"
+blocks:
+  - type: featureGrid
+    eyebrow: "What we do"
+    heading: "One team, *every channel that matters.*"
+    columns: 3
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Paid Search"
+        description: "Google Ads and Microsoft Ads accounts built and managed for efficient, scalable growth."
+        icon: search
+        color: green
+        href: "/paid-search"
+      - title: "Paid Social"
+        description: "Meta, LinkedIn, Pinterest and beyond: creative-led social campaigns that convert."
+        icon: share
+        color: orange
+        href: "/paid-social"
+      - title: "For Agencies"
+        description: "White-label PPC delivery for agencies who want expert management without building an in-house team."
+        icon: briefcase
+        color: green
+        href: "/for-agencies"
+      - title: "Training & Workshops"
+        description: "Hands-on PPC training for marketing teams who want to run campaigns in-house with confidence."
+        icon: graduation-cap
+        color: orange
+        href: "/training-and-workshops"
+      - title: "AI"
+        description: "How we use AI tools day to day, and how we approach emerging AI-native ad platforms like OpenAI Ads."
+        icon: sparkles
+        color: green
+        href: "/ai"
+  - type: channelsList
+    eyebrow: "Channels"
+    heading: "Every major ad platform, *one team.*"
+    intro: "Certified across Google and Microsoft, with hands-on experience running Meta, LinkedIn and Pinterest day to day. We pick the mix that fits your customer, not our commission."
+    items:
+      - title: "Google Ads"
+        description: "Search, Shopping, Performance Max and YouTube"
+        platform: google
+      - title: "Microsoft Ads"
+        description: "Incremental reach, often at a lower cost per click"
+        platform: bing
+      - title: "Meta"
+        description: "Facebook and Instagram audiences at scale"
+        platform: facebook
+      - title: "LinkedIn"
+        description: "B2B by job title, seniority and named accounts"
+        platform: linkedin
+      - title: "Pinterest"
+        description: "High-intent shopping and discovery"
+        platform: pinterest
+      - title: "AI-native platforms"
+        description: "OpenAI Ads and emerging channels, tested on merit"
+        icon: sparkles
+  - type: featureGrid
+    heading: "Why Pratt Digital"
+    columns: 3
+    cardStyle: plain
+    background: gray
+    items:
+      - title: "Specialists, not generalists"
+        description: "Every account is managed by someone who lives in paid media daily, not spread across ten disciplines."
+        icon: target
+        color: green
+      - title: "Data over guesswork"
+        description: "Decisions are backed by conversion data, not platform recommendations taken at face value."
+        icon: chart
+        color: orange
+      - title: "Straight-talking reporting"
+        description: "Clear monthly reporting that explains what happened, why, and what we are doing next."
+        icon: shield
+        color: green
+  - type: cta
+    title: "Let's talk about your account"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."

@@ -1,0 +1,31 @@
+title: "Microsoft Ads Management"
+metaDescription: "Microsoft Ads (Bing) management for brands who want incremental reach and lower cost-per-click alongside their Google Ads activity."
+hero:
+  eyebrow: "Paid Search / Microsoft Ads"
+  title: "Microsoft Ads Management: Reach the Audience Google Ads Misses"
+  description: "Microsoft Ads is often overlooked, but it's a genuine incremental channel, usually at a lower cost per click, with unique B2B targeting through LinkedIn profile data."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Lower cost per click"
+        description: "Less competition typically means more efficient acquisition cost than Google alone."
+        icon: chart
+        color: green
+      - title: "Import & improve"
+        description: "We import your Google Ads structure and refine it for Microsoft's audience and auction dynamics."
+        icon: layers
+        color: orange
+      - title: "Incremental reach"
+        description: "Reach the share of desktop and B2B searchers that Google Ads doesn't cover."
+        icon: compass
+        color: green
+      - title: "Audience Network"
+        description: "Native and display placements across the Microsoft ecosystem, including LinkedIn profile targeting."
+        platform: linkedin
+        color: orange
+  - type: cta
+    title: "Not running Microsoft Ads yet?"
+    description: "Find out what incremental reach could look like for your account."

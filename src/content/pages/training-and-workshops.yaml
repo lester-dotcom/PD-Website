@@ -1,0 +1,31 @@
+title: "Training and Workshops"
+metaDescription: "Hands-on paid search and paid social training and workshops for marketing teams who want to run PPC campaigns in-house with confidence."
+hero:
+  eyebrow: "Training & Workshops"
+  title: "PPC Training & Workshops: Build Skill in Your Own Team"
+  description: "Not every business wants to outsource paid media entirely. We run practical, jargon-free training so your team can plan, build and optimise campaigns with confidence."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "PPC Fundamentals"
+        description: "A practical introduction to paid search and paid social for marketers who are new to the channel."
+        icon: graduation-cap
+        color: green
+      - title: "Account Audits, Live"
+        description: "We audit your account in the room, talking through what we find and why it matters."
+        icon: search
+        color: orange
+      - title: "Advanced Bidding & Automation"
+        description: "Understand what the platform automation is actually doing, and where to keep control."
+        icon: chart
+        color: green
+      - title: "Bespoke Team Training"
+        description: "Tailored sessions built around your accounts, your goals and your team's current skill level."
+        icon: users
+        color: orange
+  - type: cta
+    title: "Want to train your team?"
+    description: "Tell us where your team is now and where you want them to be, and we'll design a session around it."

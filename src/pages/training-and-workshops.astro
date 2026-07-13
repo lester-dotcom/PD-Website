@@ -1,57 +1,22 @@
 ---
+import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import CtaBanner from '../components/CtaBanner.astro';
-import Icon from '../components/Icon.astro';
+import BlockRenderer from '../components/BlockRenderer.astro';
 import { cornerContent } from '../components/IconCluster.astro';
 
-const workshops = [
-  { title: 'PPC Fundamentals', description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.', icon: 'graduation-cap', color: 'green' },
-  { title: 'Account Audits, Live', description: 'We audit your account in the room, talking through what we find and why it matters.', icon: 'search', color: 'orange' },
-  { title: 'Advanced Bidding & Automation', description: 'Understand what the platform automation is actually doing, and where to keep control.', icon: 'chart', color: 'green' },
-  { title: 'Bespoke Team Training', description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.', icon: 'users', color: 'orange' },
-] as const;
-
-const borderColors = {
-  green: 'border-brand-green',
-  orange: 'border-brand-orange',
-} as const;
-
-const badgeColors = {
-  green: 'bg-brand-green/10 text-brand-green-dark',
-  orange: 'bg-brand-orange/10 text-brand-orange-dark',
-} as const;
+const page = await getEntry('pages', 'training-and-workshops');
+if (!page) throw new Error('Missing pages/training-and-workshops.yaml content entry');
+const { title, metaDescription, hero, blocks } = page.data;
 ---
 
-<BaseLayout
-  title="Training and Workshops"
-  description="Hands-on paid search and paid social training and workshops for marketing teams who want to run PPC campaigns in-house with confidence."
->
+<BaseLayout title={title} description={metaDescription}>
   <PageHero
-    eyebrow="Training & Workshops"
-    title="PPC Training & Workshops: Build Skill in Your Own Team"
-    description="Not every business wants to outsource paid media entirely. We run practical, jargon-free training so your team can plan, build and optimise campaigns with confidence."
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
     cluster={cornerContent}
   />
 
-  <section class="bg-brand-slate">
-    <div class="mx-auto max-w-6xl px-6 py-20">
-      <div class="grid gap-6 sm:grid-cols-2">
-        {workshops.map((workshop) => (
-          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[workshop.color]}`}>
-            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[workshop.color]}`}>
-              <Icon name={workshop.icon} class="h-6 w-6" />
-            </div>
-            <h3 class="mt-4 font-semibold text-brand-slate">{workshop.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate-light">{workshop.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <CtaBanner
-    title="Want to train your team?"
-    description="Tell us where your team is now and where you want them to be, and we'll design a session around it."
-  />
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

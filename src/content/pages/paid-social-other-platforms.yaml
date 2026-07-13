@@ -1,0 +1,30 @@
+title: "Other Paid Social Platforms"
+metaDescription: "Paid social management on LinkedIn and Pinterest, plus other emerging platforms, evaluated on merit for your audience."
+hero:
+  eyebrow: "Paid Social / Other Platforms"
+  title: "LinkedIn & Pinterest Advertising: Beyond Facebook and Instagram"
+  description: "Not every audience lives on Meta. Where LinkedIn, Pinterest or another platform genuinely fits your audience, we'll say so, and manage it properly."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "LinkedIn"
+        description: "The default choice for B2B lead generation and account-based targeting. We use native lead gen forms to cut friction, and target by job title, seniority and named account lists rather than broad industry categories."
+        platform: linkedin
+        logoStyle: full
+        color: green
+      - title: "Pinterest"
+        description: "High-intent discovery advertising, particularly strong for retail and lifestyle brands. Shopping campaigns built from your product feed reach people who are actively planning a purchase, and Pins keep driving traffic well beyond the campaign flight."
+        platform: pinterest
+        logoStyle: full
+        color: orange
+  - type: text
+    background: slate
+    icon: compass
+    heading: "Weighing up a newer platform?"
+    body: "TikTok, Snapchat, Reddit and others come up regularly in planning conversations. We'll assess any of them against your audience and budget honestly, recommending a test only where the fit is genuine, not because it's the newest option on the table."
+  - type: cta
+    title: "Let's talk about your account"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."

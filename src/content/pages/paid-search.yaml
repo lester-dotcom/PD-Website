@@ -1,0 +1,31 @@
+title: "Paid Search"
+metaDescription: "Paid search management across Google Ads and Microsoft Ads, built around conversion data and commercial goals rather than platform defaults."
+hero:
+  eyebrow: "Paid Search"
+  title: "Paid Search Management: Built on Intent, Not Guesswork"
+  description: "We build and manage paid search accounts that capture demand efficiently, structured around your actual sales and lead data, not the platform's default settings."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Google Ads"
+        description: "Search, Shopping, Performance Max and YouTube campaigns built around real commercial intent."
+        platform: google
+        logoStyle: full
+        color: green
+        href: "/paid-search/google-ads"
+      - title: "Microsoft Ads"
+        description: "Reach the audience Google can't, often at a lower cost per click."
+        platform: bing
+        logoStyle: full
+        color: orange
+        href: "/paid-search/microsoft-ads"
+  - type: text
+    background: gray
+    heading: "How we approach paid search"
+    body: "Every account starts with a structural and tracking audit: no changes get made until we know conversion data is accurate. From there we build campaigns around your margins and sales cycle, not around what the platform thinks \"good\" looks like."
+  - type: cta
+    title: "Let's talk about your account"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."

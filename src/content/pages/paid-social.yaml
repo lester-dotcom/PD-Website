@@ -1,0 +1,26 @@
+title: "Paid Social"
+metaDescription: "Paid social management across Meta, LinkedIn, Pinterest and other platforms, built on creative testing and clean conversion tracking."
+hero:
+  eyebrow: "Paid Social"
+  title: "Paid Social Management: Creative-Led Campaigns That Convert"
+  description: "Paid social succeeds or fails on creative and tracking. We manage both, testing systematically and making sure the data behind every decision is accurate."
+blocks:
+  - type: featureGrid
+    columns: 2
+    cardStyle: bordered
+    background: slate
+    items:
+      - title: "Meta (Facebook & Instagram)"
+        description: "Facebook and Instagram campaigns built on creative testing and clean event tracking."
+        platform: facebook
+        logoStyle: full
+        color: green
+        href: "/paid-social/meta"
+      - title: "Other Platforms"
+        description: "LinkedIn and Pinterest, plus other channels, evaluated on merit for your audience."
+        icon: compass
+        color: orange
+        href: "/paid-social/other-platforms"
+  - type: cta
+    title: "Let's talk about your account"
+    description: "Get a no-obligation review of your paid search and social performance from a specialist, not an account manager reading a script."
