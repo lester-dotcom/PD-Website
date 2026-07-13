@@ -1,57 +1,22 @@
 ---
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import CtaBanner from '../components/CtaBanner.astro';
-import Icon from '../components/Icon.astro';
+import BlockRenderer from '../components/BlockRenderer.astro';
 import { cornerAgency } from '../components/IconCluster.astro';
 
-const points = [
-  { title: 'White-label delivery', description: 'We work under your brand, reporting through you: your clients never need to know we exist.', icon: 'shield', color: 'green' },
-  { title: 'Overflow capacity', description: 'Take on more accounts than your current team can handle without a rushed hire.', icon: 'users', color: 'orange' },
-  { title: 'Specialist coverage', description: 'Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest) that you don’t have in-house.', icon: 'layers', color: 'green' },
-  { title: 'Flexible engagement', description: 'Scale up or down per account, per month. No long lock-in contracts.', icon: 'target', color: 'orange' },
-] as const;
-
-const borderColors = {
-  green: 'border-brand-green',
-  orange: 'border-brand-orange',
-} as const;
-
-const badgeColors = {
-  green: 'bg-brand-green/10 text-brand-green-dark',
-  orange: 'bg-brand-orange/10 text-brand-orange-dark',
-} as const;
+const page = await getEntry('pages', 'for-agencies');
+if (!page) throw new Error('Missing pages/for-agencies.yaml content entry');
+const { title, metaDescription, hero, blocks } = page.data;
 ---
 
-<BaseLayout
-  title="For Agencies"
-  description="White-label paid search and paid social delivery for agencies. Add specialist PPC capacity without the overhead of hiring in-house."
->
+<BaseLayout title={title} description={metaDescription}>
   <PageHero
-    eyebrow="For Agencies"
-    title="White-Label PPC for Agencies: Extra Capacity, Without the Overhead"
-    description="We deliver white-label paid search and paid social management for agencies who need specialist capacity: for overflow, for a skill gap, or for a client that needs more attention than the current team can give."
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
     cluster={cornerAgency}
   />
 
-  <section class="bg-brand-slate">
-    <div class="mx-auto max-w-6xl px-6 py-20">
-      <div class="grid gap-6 sm:grid-cols-2">
-        {points.map((point) => (
-          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[point.color]}`}>
-            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[point.color]}`}>
-              <Icon name={point.icon} class="h-6 w-6" />
-            </div>
-            <h3 class="mt-4 font-semibold text-brand-slate">{point.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate-light">{point.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <CtaBanner
-    title="Need extra hands on an account?"
-    description="Tell us about the accounts you need support with and we'll put together a plan."
-  />
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

@@ -28,3 +28,64 @@ collections:
         default: ["Paid Search"]
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "for-agencies"
+        label: "For Agencies"
+        file: "src/content/pages/for-agencies.yaml"
+        fields:
+          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "Content Blocks"
+            name: "blocks"
+            widget: "list"
+            types:
+              - label: "Feature Grid"
+                name: "featureGrid"
+                widget: "object"
+                summary: "Feature Grid ({{fields.items}} cards)"
+                fields:
+                  - label: "Cards"
+                    name: "items"
+                    widget: "list"
+                    summary: "{{title}}"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Description", name: "description", widget: "text" }
+                      - label: "Icon"
+                        name: "icon"
+                        widget: "select"
+                        options:
+                          [
+                            "search", "share", "users", "graduation-cap", "sparkles", "chart",
+                            "megaphone", "pin", "briefcase", "chat", "target", "layers", "shield",
+                            "compass", "hashtag", "heart", "arrow-forward", "instagram", "youtube",
+                            "eye", "thumbsup", "gear",
+                          ]
+                      - label: "Colour"
+                        name: "color"
+                        widget: "select"
+                        options: ["green", "orange"]
+              - label: "CTA Banner"
+                name: "cta"
+                widget: "object"
+                summary: "CTA: {{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - label: "Text Section"
+                name: "text"
+                widget: "object"
+                summary: "Text: {{fields.heading}}"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", required: false }
+                  - { label: "Body", name: "body", widget: "text" }
