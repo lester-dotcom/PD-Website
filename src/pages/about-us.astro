@@ -14,7 +14,13 @@ const { title, metaDescription, hero, blocks } = page.data;
 ---
 
 <BaseLayout title={title} description={metaDescription}>
-  <PageHero eyebrow={hero.eyebrow} title={hero.title} description={hero.description} />
+  <PageHero
+    eyebrow={hero.eyebrow}
+    title={hero.title}
+    description={hero.description}
+    heroImage={hero.heroImage}
+    heroImageAlt={hero.heroImageAlt}
+  />
 
   <BlockRenderer blocks={blocks} />
 </BaseLayout>

@@ -132,6 +132,8 @@ const pages = defineCollection({
       description: z.string(),
       primaryButton: heroButton.optional(),
       secondaryButton: heroButton.optional(),
+      heroImage: z.string().optional(),
+      heroImageAlt: z.string().optional(),
     }),
     blocks: z.array(
       z.discriminatedUnion('type', [

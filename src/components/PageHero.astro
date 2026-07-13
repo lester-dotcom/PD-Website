@@ -9,26 +9,64 @@ interface Props {
   platform?: PlatformName;
   cluster?: CircleSpec[];
   anchorLogo?: AnchorLogo;
+  heroImage?: string;
+  heroImageAlt?: string;
 }
 
-const { eyebrow, title, description, platform, cluster = cornerGeneral, anchorLogo = 'pratt' } = Astro.props;
+const {
+  eyebrow,
+  title,
+  description,
+  platform,
+  cluster = cornerGeneral,
+  anchorLogo = 'pratt',
+  heroImage,
+  heroImageAlt,
+} = Astro.props;
 ---
 
-<section class="relative overflow-hidden border-b border-gray-100 bg-gray-50">
-  <div class="pointer-events-none absolute right-0 top-0 h-56 w-56 sm:h-72 sm:w-72">
-    <IconCluster viewBox="0 0 160 160" circles={cluster} anchorLogo={anchorLogo} />
-  </div>
-
-  <div class="relative mx-auto max-w-4xl px-6 py-16 text-center sm:py-20">
-    {platform && (
-      <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-slate text-white">
-        <PlatformBadge platform={platform} class="h-7 w-7" />
+{heroImage ? (
+  <section class="border-b border-gray-100 bg-gray-50">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 sm:py-20 lg:grid-cols-2">
+      <div>
+        {platform && (
+          <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-slate text-white">
+            <PlatformBadge platform={platform} class="h-7 w-7" />
+          </div>
+        )}
+        {eyebrow && (
+          <p class="text-sm font-semibold uppercase tracking-wide text-brand-green-dark">{eyebrow}</p>
+        )}
+        <h1 class="mt-3 text-4xl font-bold text-brand-slate sm:text-5xl">{title}</h1>
+        <p class="mt-5 text-lg text-brand-slate-light">{description}</p>
       </div>
-    )}
-    {eyebrow && (
-      <p class="text-sm font-semibold uppercase tracking-wide text-brand-green-dark">{eyebrow}</p>
-    )}
-    <h1 class="mt-3 text-4xl font-bold text-brand-slate sm:text-5xl">{title}</h1>
-    <p class="mx-auto mt-5 max-w-2xl text-lg text-brand-slate-light">{description}</p>
-  </div>
-</section>
+
+      <img
+        src={heroImage}
+        alt={heroImageAlt || ''}
+        loading="eager"
+        decoding="async"
+        class="aspect-[4/3] w-full rounded-2xl border-2 border-brand-green object-cover"
+      />
+    </div>
+  </section>
+) : (
+  <section class="relative overflow-hidden border-b border-gray-100 bg-gray-50">
+    <div class="pointer-events-none absolute right-0 top-0 h-56 w-56 sm:h-72 sm:w-72">
+      <IconCluster viewBox="0 0 160 160" circles={cluster} anchorLogo={anchorLogo} />
+    </div>
+
+    <div class="relative mx-auto max-w-4xl px-6 py-16 text-center sm:py-20">
+      {platform && (
+        <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-slate text-white">
+          <PlatformBadge platform={platform} class="h-7 w-7" />
+        </div>
+      )}
+      {eyebrow && (
+        <p class="text-sm font-semibold uppercase tracking-wide text-brand-green-dark">{eyebrow}</p>
+      )}
+      <h1 class="mt-3 text-4xl font-bold text-brand-slate sm:text-5xl">{title}</h1>
+      <p class="mx-auto mt-5 max-w-2xl text-lg text-brand-slate-light">{description}</p>
+    </div>
+  </section>
+)}

@@ -258,6 +258,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -277,6 +279,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
 
       - name: "for-agencies"
         label: "For Agencies"
@@ -294,6 +298,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -313,6 +319,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -332,6 +340,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -351,6 +361,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -370,6 +382,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -389,6 +403,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -408,6 +424,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -427,6 +445,8 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
 
@@ -446,5 +466,7 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
               - { label: "Heading", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Hero Photo (optional, replaces the decorative graphic)", name: "heroImage", widget: "image", required: false }
+              - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the photo for screen readers and SEO. Required if a photo is set." }
           - <<: *blocksField
             types: *blockTypes
