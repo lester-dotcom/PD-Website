@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
+import { cornerAgency } from '../components/IconCluster.astro';
 
 const points = [
   { title: 'White-label delivery', description: 'We work under your brand, reporting through you: your clients never need to know we exist.', icon: 'shield', color: 'green' },
@@ -25,6 +26,7 @@ const cardColors = {
     eyebrow="For Agencies"
     title="White-Label PPC for Agencies: Extra Capacity, Without the Overhead"
     description="We deliver white-label paid search and paid social management for agencies who need specialist capacity: for overflow, for a skill gap, or for a client that needs more attention than the current team can give."
+    cluster={cornerAgency}
   />
 
   <section class="bg-brand-slate">

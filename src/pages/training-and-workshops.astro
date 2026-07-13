@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
+import { cornerContent } from '../components/IconCluster.astro';
 
 const workshops = [
   { title: 'PPC Fundamentals', description: 'A practical introduction to paid search and paid social for marketers who are new to the channel.', icon: 'graduation-cap', color: 'green' },
@@ -25,6 +26,7 @@ const cardColors = {
     eyebrow="Training & Workshops"
     title="PPC Training & Workshops: Build Skill in Your Own Team"
     description="Not every business wants to outsource paid media entirely. We run practical, jargon-free training so your team can plan, build and optimise campaigns with confidence."
+    cluster={cornerContent}
   />
 
   <section class="bg-brand-slate">

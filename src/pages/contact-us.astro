@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import { cornerSocial } from '../components/IconCluster.astro';
 ---
 <BaseLayout
   title="Contact Us"
@@ -10,6 +11,7 @@ import PageHero from '../components/PageHero.astro';
     eyebrow="Contact Us"
     title="Contact Pratt Digital: Let's Talk About Your Account"
     description="Tell us a bit about what you're running today and what you'd like to achieve. We'll come back with honest thoughts, not a sales script."
+    cluster={cornerSocial}
   />
 
   <section class="mx-auto max-w-2xl px-6 py-16">

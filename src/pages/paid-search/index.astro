@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import PlatformLogo from '../../components/PlatformLogo.astro';
+import { cornerSearch } from '../../components/IconCluster.astro';
 
 const platforms = [
   {
@@ -35,6 +36,7 @@ const cardColors = {
     eyebrow="Paid Search"
     title="Paid Search Management: Built on Intent, Not Guesswork"
     description="We build and manage paid search accounts that capture demand efficiently, structured around your actual sales and lead data, not the platform's default settings."
+    cluster={cornerSearch}
   />
 
   <section class="bg-brand-slate">

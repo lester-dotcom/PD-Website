@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import PlatformBadge from '../../components/PlatformBadge.astro';
+import { cornerSearch } from '../../components/IconCluster.astro';
 
 const capabilities = [
   { title: 'Search', description: 'Keyword-led campaigns matched to real commercial intent.', icon: 'search', color: 'green' },
@@ -27,6 +28,7 @@ const cardColors = {
     title="Google Ads Management: A Specialist on Every Account"
     description="From Search and Shopping through to Performance Max and YouTube, we manage Google Ads accounts around your real sales data, not the recommendations tab."
     platform="google"
+    cluster={cornerSearch}
   />
 
   <section class="bg-brand-slate">

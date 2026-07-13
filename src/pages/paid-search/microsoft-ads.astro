@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import PlatformBadge from '../../components/PlatformBadge.astro';
+import { cornerSearch } from '../../components/IconCluster.astro';
 
 const reasons = [
   { title: 'Lower cost per click', description: 'Less competition typically means more efficient acquisition cost than Google alone.', icon: 'chart', color: 'green' },
@@ -27,6 +28,7 @@ const cardColors = {
     title="Microsoft Ads Management: Reach the Audience Google Ads Misses"
     description="Microsoft Ads is often overlooked, but it's a genuine incremental channel, usually at a lower cost per click, with unique B2B targeting through LinkedIn profile data."
     platform="bing"
+    cluster={cornerSearch}
   />
 
   <section class="bg-brand-slate">

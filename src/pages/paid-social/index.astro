@@ -4,6 +4,7 @@ import PageHero from '../../components/PageHero.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
 import Icon from '../../components/Icon.astro';
 import PlatformLogo from '../../components/PlatformLogo.astro';
+import { cornerSocial } from '../../components/IconCluster.astro';
 
 const platforms = [
   { title: 'Meta (Facebook & Instagram)', href: '/paid-social/meta', description: 'Facebook and Instagram campaigns built on creative testing and clean event tracking.', platform: 'facebook', color: 'green' },
@@ -24,6 +25,7 @@ const cardColors = {
     eyebrow="Paid Social"
     title="Paid Social Management: Creative-Led Campaigns That Convert"
     description="Paid social succeeds or fails on creative and tracking. We manage both, testing systematically and making sure the data behind every decision is accurate."
+    cluster={cornerSocial}
   />
 
   <section class="bg-brand-slate">

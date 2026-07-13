@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import Icon from '../components/Icon.astro';
+import { cornerGeneral } from '../components/IconCluster.astro';
 
 const useCases = [
   {
@@ -45,6 +46,7 @@ const cardColors = {
     eyebrow="AI"
     title="AI in Paid Media: A Tool, Not a Replacement for Judgement"
     description="We use AI tools to work faster and see more, but every recommendation still passes through a specialist before it touches your budget. Here's how we use AI today, and how we're thinking about AI-native ad platforms."
+    cluster={cornerGeneral}
   />
 
   <section class="bg-brand-slate">
