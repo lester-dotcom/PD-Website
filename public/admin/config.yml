@@ -6,8 +6,8 @@ backend:
 # Netlify with Identity enabled. See README.md "Connecting Decap CMS" section.
 
 publish_mode: editorial_workflow
-media_folder: "src/assets/blog"
-public_folder: "/src/assets/blog"
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "blog"
@@ -221,10 +221,7 @@ collections:
                     fields:
                       - { label: "Name", name: "name", widget: "string" }
                       - { label: "Role", name: "role", widget: "string" }
-                      - label: "Photo"
-                        name: "photoKey"
-                        widget: "select"
-                        options: ["amelia", "lester"]
+                      - { label: "Photo", name: "photo", widget: "image", hint: "Square photos work best (used at 128x128)." }
                       - { label: "Bio", name: "bio", widget: "text" }
               - label: "Process Steps"
                 name: "processSteps"
@@ -252,7 +249,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -271,7 +268,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -288,7 +285,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -307,7 +304,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -326,7 +323,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -345,7 +342,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -364,7 +361,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -383,7 +380,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -402,7 +399,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -421,7 +418,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -440,7 +437,7 @@ collections:
           - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
-          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search - sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"

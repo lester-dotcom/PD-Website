@@ -97,7 +97,7 @@ const teamBiosBlock = z.object({
     z.object({
       name: z.string(),
       role: z.string(),
-      photoKey: z.enum(['amelia', 'lester']),
+      photo: z.string(),
       bio: z.string(),
     })
   ),

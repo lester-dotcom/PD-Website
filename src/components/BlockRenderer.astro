@@ -1,12 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import IconBadge from './IconBadge.astro';
 import PlatformBadge from './PlatformBadge.astro';
 import PlatformLogo from './PlatformLogo.astro';
 import CtaBanner from './CtaBanner.astro';
-import ameliaPhoto from '../assets/team/amelia.jpg';
-import lesterPhoto from '../assets/team/lester.jpg';
 import type { IconName } from '../lib/icon-paths';
 import type { PlatformName } from './PlatformBadge.astro';
 
@@ -55,7 +52,7 @@ interface TeamBiosBlock {
   type: 'teamBios';
   eyebrow: string;
   heading: string;
-  members: { name: string; role: string; photoKey: 'amelia' | 'lester'; bio: string }[];
+  members: { name: string; role: string; photo: string; bio: string }[];
 }
 interface ProcessStepsBlock {
   type: 'processSteps';
@@ -78,8 +75,6 @@ const badgeColors = {
   green: 'bg-brand-green/10 text-brand-green-dark',
   orange: 'bg-brand-orange/10 text-brand-orange-dark',
 } as const;
-const teamPhotos = { amelia: ameliaPhoto, lester: lesterPhoto } as const;
-
 // Lightweight *word* -> <em> markdown for the italic accent used across headings.
 function emphasisParts(text: string) {
   return text.split(/\*(.+?)\*/).map((part, i) => ({ text: part, italic: i % 2 === 1 }));
@@ -234,8 +229,8 @@ const sectionBg = (background: Background) => {
           <div class="mt-12 grid gap-12 sm:grid-cols-2">
             {block.members.map((person) => (
               <div class="flex gap-5">
-                <Image
-                  src={teamPhotos[person.photoKey]}
+                <img
+                  src={person.photo}
                   alt={`${person.name}, ${person.role} at Pratt Digital`}
                   width={128}
                   height={128}

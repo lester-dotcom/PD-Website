@@ -28,11 +28,11 @@ blocks:
     members:
       - name: "Amelia Pratt"
         role: "Co-Founder & Director"
-        photoKey: amelia
+        photo: "/uploads/team/amelia.jpg"
         bio: "With deep-rooted paid search and marketing experience stretching back to the early days of search, Amelia has been digitally evolving right alongside the platforms she manages. Before founding Pratt Digital in 2013, she worked with some of London's top search agencies, including i-Level and Leapfrogg. Her strategic approach is built fresh for every account, blending creativity with a relentless focus on the data."
       - name: "Lester Pratt"
         role: "Co-Founder & Director"
-        photoKey: lester
+        photo: "/uploads/team/lester.jpg"
         bio: "Twenty years in senior retail management gave Lester an analytical streak and a head for numbers most agency owners would envy. Since joining Pratt Digital, he has put his creative side to work across a wide range of successful campaigns, and genuinely enjoys the challenge of writing ad copy that actually earns the click."
   - type: cta
     title: "Want to know more?"
