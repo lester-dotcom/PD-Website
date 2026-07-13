@@ -1,8 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import { cornerContent } from '../../components/IconCluster.astro';
+
+const settings = await getEntry('settings', 'site');
+if (settings && !settings.data.blogVisible) return Astro.rewrite('/404');
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

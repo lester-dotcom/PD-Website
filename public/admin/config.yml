@@ -29,6 +29,19 @@ collections:
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "site"
+        label: "General Settings"
+        file: "src/content/settings/site.yaml"
+        fields:
+          - label: "Show Blog"
+            name: "blogVisible"
+            widget: "boolean"
+            default: true
+            hint: "Turn off to hide the whole blog section (index and all posts) from the live site and the navigation menu until you're ready to launch it."
+
   - name: "pages"
     label: "Pages"
     files:
@@ -238,6 +251,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -254,6 +269,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -268,6 +285,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -284,6 +303,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -300,6 +321,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -316,6 +339,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -332,6 +357,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -348,6 +375,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -364,6 +393,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -380,6 +411,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -396,6 +429,8 @@ collections:
         fields:
           - { label: "Browser Tab Title", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+          - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
             widget: "object"

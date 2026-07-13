@@ -1,6 +1,32 @@
 ---
 import logoWhite from '../assets/logo-white.png';
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+
+async function isNavVisible(slug: string) {
+  const entry = await getEntry('pages', slug);
+  if (!entry) return true;
+  return !entry.data.hidden && entry.data.showInNav;
+}
+
+const settings = await getEntry('settings', 'site');
+const blogVisible = !settings || settings.data.blogVisible;
+
+const [
+  aboutUsVisible,
+  paidSearchVisible,
+  paidSocialVisible,
+  forAgenciesVisible,
+  trainingVisible,
+  aiVisible,
+] = await Promise.all([
+  isNavVisible('about-us'),
+  isNavVisible('paid-search'),
+  isNavVisible('paid-social'),
+  isNavVisible('for-agencies'),
+  isNavVisible('training-and-workshops'),
+  isNavVisible('ai'),
+]);
 
 const year = new Date().getFullYear();
 ---
@@ -17,19 +43,19 @@ const year = new Date().getFullYear();
     <div>
       <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-green">Services</h3>
       <ul class="mt-4 space-y-2 text-sm text-white/80">
-        <li><a href="/paid-search" class="hover:text-brand-green">Paid Search</a></li>
-        <li><a href="/paid-social" class="hover:text-brand-green">Paid Social</a></li>
-        <li><a href="/for-agencies" class="hover:text-brand-green">For Agencies</a></li>
-        <li><a href="/training-and-workshops" class="hover:text-brand-green">Training &amp; Workshops</a></li>
-        <li><a href="/ai" class="hover:text-brand-green">AI</a></li>
+        {paidSearchVisible && <li><a href="/paid-search" class="hover:text-brand-green">Paid Search</a></li>}
+        {paidSocialVisible && <li><a href="/paid-social" class="hover:text-brand-green">Paid Social</a></li>}
+        {forAgenciesVisible && <li><a href="/for-agencies" class="hover:text-brand-green">For Agencies</a></li>}
+        {trainingVisible && <li><a href="/training-and-workshops" class="hover:text-brand-green">Training &amp; Workshops</a></li>}
+        {aiVisible && <li><a href="/ai" class="hover:text-brand-green">AI</a></li>}
       </ul>
     </div>
 
     <div>
       <h3 class="text-sm font-semibold uppercase tracking-wide text-brand-green">Company</h3>
       <ul class="mt-4 space-y-2 text-sm text-white/80">
-        <li><a href="/about-us" class="hover:text-brand-green">About Us</a></li>
-        <li><a href="/blog" class="hover:text-brand-green">Blog</a></li>
+        {aboutUsVisible && <li><a href="/about-us" class="hover:text-brand-green">About Us</a></li>}
+        {blogVisible && <li><a href="/blog" class="hover:text-brand-green">Blog</a></li>}
         <li><a href="/contact-us" class="hover:text-brand-green">Contact Us</a></li>
       </ul>
     </div>

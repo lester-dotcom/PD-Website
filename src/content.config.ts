@@ -123,6 +123,8 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     metaDescription: z.string(),
+    hidden: z.boolean().default(false),
+    showInNav: z.boolean().default(true),
     hero: z.object({
       eyebrow: z.string().optional(),
       title: z.string(),
@@ -143,4 +145,11 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { blog, pages };
+const settings = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/settings' }),
+  schema: z.object({
+    blogVisible: z.boolean().default(true),
+  }),
+});
+
+export const collections = { blog, pages, settings };

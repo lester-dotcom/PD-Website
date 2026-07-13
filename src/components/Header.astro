@@ -1,16 +1,50 @@
 ---
 import logo from '../assets/logo.png';
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+
+async function isNavVisible(slug: string) {
+  const entry = await getEntry('pages', slug);
+  if (!entry) return true;
+  return !entry.data.hidden && entry.data.showInNav;
+}
+
+const settings = await getEntry('settings', 'site');
+const blogVisible = !settings || settings.data.blogVisible;
+
+const [
+  aboutUsVisible,
+  paidSearchVisible,
+  googleAdsVisible,
+  microsoftAdsVisible,
+  paidSocialVisible,
+  metaVisible,
+  otherPlatformsVisible,
+  forAgenciesVisible,
+  trainingVisible,
+  aiVisible,
+] = await Promise.all([
+  isNavVisible('about-us'),
+  isNavVisible('paid-search'),
+  isNavVisible('paid-search-google-ads'),
+  isNavVisible('paid-search-microsoft-ads'),
+  isNavVisible('paid-social'),
+  isNavVisible('paid-social-meta'),
+  isNavVisible('paid-social-other-platforms'),
+  isNavVisible('for-agencies'),
+  isNavVisible('training-and-workshops'),
+  isNavVisible('ai'),
+]);
 
 const paidSearch = [
-  { label: 'Google Ads', href: '/paid-search/google-ads' },
-  { label: 'Microsoft Ads', href: '/paid-search/microsoft-ads' },
-];
+  googleAdsVisible && { label: 'Google Ads', href: '/paid-search/google-ads' },
+  microsoftAdsVisible && { label: 'Microsoft Ads', href: '/paid-search/microsoft-ads' },
+].filter((item) => item !== false);
 
 const paidSocial = [
-  { label: 'Meta (Facebook & Instagram)', href: '/paid-social/meta' },
-  { label: 'Other Platforms', href: '/paid-social/other-platforms' },
-];
+  metaVisible && { label: 'Meta (Facebook & Instagram)', href: '/paid-social/meta' },
+  otherPlatformsVisible && { label: 'Other Platforms', href: '/paid-social/other-platforms' },
+].filter((item) => item !== false);
 ---
 
 <header class="border-b border-gray-100">
@@ -21,39 +55,57 @@ const paidSocial = [
 
     <nav aria-label="Primary" class="hidden lg:block">
       <ul class="flex items-center gap-1 text-sm font-medium text-brand-slate">
-        <li>
-          <a href="/about-us" class="block px-3 py-2 hover:text-brand-green-dark">About Us</a>
-        </li>
-        <li class="group relative">
-          <a href="/paid-search" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
-            Paid Search
-            <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
-          </a>
-          <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
-            {paidSearch.map((item) => (
-              <li>
-                <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </li>
-        <li class="group relative">
-          <a href="/paid-social" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
-            Paid Social
-            <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
-          </a>
-          <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
-            {paidSocial.map((item) => (
-              <li>
-                <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </li>
-        <li><a href="/for-agencies" class="block px-3 py-2 hover:text-brand-green-dark">For Agencies</a></li>
-        <li><a href="/training-and-workshops" class="block px-3 py-2 hover:text-brand-green-dark">Training</a></li>
-        <li><a href="/ai" class="block px-3 py-2 hover:text-brand-green-dark">AI</a></li>
-        <li><a href="/blog" class="block px-3 py-2 hover:text-brand-green-dark">Blog</a></li>
+        {aboutUsVisible && (
+          <li>
+            <a href="/about-us" class="block px-3 py-2 hover:text-brand-green-dark">About Us</a>
+          </li>
+        )}
+        {paidSearchVisible && (
+          <li class="group relative">
+            <a href="/paid-search" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
+              Paid Search
+              <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
+            </a>
+            {paidSearch.length > 0 && (
+              <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+                {paidSearch.map((item) => (
+                  <li>
+                    <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        )}
+        {paidSocialVisible && (
+          <li class="group relative">
+            <a href="/paid-social" class="flex items-center gap-1 px-3 py-2 hover:text-brand-green-dark">
+              Paid Social
+              <svg viewBox="0 0 12 8" class="h-2 w-2.5 fill-current" aria-hidden="true"><path d="M0 0l6 8 6-8z"/></svg>
+            </a>
+            {paidSocial.length > 0 && (
+              <ul class="invisible absolute left-0 top-full w-56 rounded-lg border border-gray-100 bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
+                {paidSocial.map((item) => (
+                  <li>
+                    <a href={item.href} class="block px-4 py-2 hover:bg-gray-50 hover:text-brand-green-dark">{item.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        )}
+        {forAgenciesVisible && (
+          <li><a href="/for-agencies" class="block px-3 py-2 hover:text-brand-green-dark">For Agencies</a></li>
+        )}
+        {trainingVisible && (
+          <li><a href="/training-and-workshops" class="block px-3 py-2 hover:text-brand-green-dark">Training</a></li>
+        )}
+        {aiVisible && (
+          <li><a href="/ai" class="block px-3 py-2 hover:text-brand-green-dark">AI</a></li>
+        )}
+        {blogVisible && (
+          <li><a href="/blog" class="block px-3 py-2 hover:text-brand-green-dark">Blog</a></li>
+        )}
       </ul>
     </nav>
 
@@ -80,23 +132,31 @@ const paidSocial = [
 
   <nav id="mobile-nav" aria-label="Primary mobile" class="hidden border-t border-gray-100 px-6 py-4 lg:hidden">
     <ul class="flex flex-col gap-3 text-sm font-medium text-brand-slate">
-      <li><a href="/about-us">About Us</a></li>
-      <li>
-        <span class="font-semibold">Paid Search</span>
-        <ul class="mt-2 flex flex-col gap-2 pl-4">
-          {paidSearch.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        </ul>
-      </li>
-      <li>
-        <span class="font-semibold">Paid Social</span>
-        <ul class="mt-2 flex flex-col gap-2 pl-4">
-          {paidSocial.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-        </ul>
-      </li>
-      <li><a href="/for-agencies">For Agencies</a></li>
-      <li><a href="/training-and-workshops">Training</a></li>
-      <li><a href="/ai">AI</a></li>
-      <li><a href="/blog">Blog</a></li>
+      {aboutUsVisible && <li><a href="/about-us">About Us</a></li>}
+      {paidSearchVisible && (
+        <li>
+          <span class="font-semibold">Paid Search</span>
+          {paidSearch.length > 0 && (
+            <ul class="mt-2 flex flex-col gap-2 pl-4">
+              {paidSearch.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+            </ul>
+          )}
+        </li>
+      )}
+      {paidSocialVisible && (
+        <li>
+          <span class="font-semibold">Paid Social</span>
+          {paidSocial.length > 0 && (
+            <ul class="mt-2 flex flex-col gap-2 pl-4">
+              {paidSocial.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+            </ul>
+          )}
+        </li>
+      )}
+      {forAgenciesVisible && <li><a href="/for-agencies">For Agencies</a></li>}
+      {trainingVisible && <li><a href="/training-and-workshops">Training</a></li>}
+      {aiVisible && <li><a href="/ai">AI</a></li>}
+      {blogVisible && <li><a href="/blog">Blog</a></li>}
       <li><a href="/contact-us" class="font-semibold text-brand-green-dark">Contact Us</a></li>
     </ul>
   </nav>

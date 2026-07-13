@@ -6,6 +6,7 @@ import BlockRenderer from '../components/BlockRenderer.astro';
 
 const page = await getEntry('pages', 'about-us');
 if (!page) throw new Error('Missing pages/about-us.yaml content entry');
+if (page.data.hidden) return Astro.rewrite('/404');
 const { title, metaDescription, hero, blocks } = page.data;
 ---
 
