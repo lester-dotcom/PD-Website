@@ -1,28 +1,35 @@
-title: "For Agencies"
-metaDescription: "White-label paid search and paid social delivery for agencies. Add specialist PPC capacity without the overhead of hiring in-house."
+title: For Agencies
+metaDescription: White-label paid search and paid social delivery for agencies.
+  Add specialist PPC capacity without the overhead of hiring in-house.
 hero:
-  eyebrow: "For Agencies"
+  eyebrow: For Agencies
   title: "White-Label PPC for Agencies: Extra Capacity, Without the Overhead"
-  description: "We deliver white-label paid search and paid social management for agencies who need specialist capacity: for overflow, for a skill gap, or for a client that needs more attention than the current team can give."
+  description: "We deliver white-label paid search and paid social management for
+    agencies who need specialist capacity: for overflow, for a skill gap, or for
+    a client that needs more attention than the current team can give."
 blocks:
   - type: featureGrid
     items:
-      - title: "White-label delivery"
-        description: "We work under your brand, reporting through you: your clients never need to know we exist."
+      - title: White-label delivery
+        description: "We work under your brand, reporting through you: your clients
+          never need to know we exist."
         icon: shield
         color: green
-      - title: "Overflow capacity"
-        description: "Take on more accounts than your current team can handle without a rushed hire."
+      - title: Overflow capacity
+        description: Take on more accounts than your current team can handle without a
+          rushed hire.
         icon: users
         color: orange
-      - title: "Specialist coverage"
-        description: "Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest) that you don't have in-house."
+      - title: Specialist coverage
+        description: Bring in platform expertise (Microsoft Ads, LinkedIn, Pinterest)
+          that you don't have in-house.
         icon: layers
         color: green
-      - title: "Flexible engagement"
-        description: "Scale up or down per account, per month. No long lock-in contracts."
+      - title: Flexible engagement
+        description: Scale up or down per account, per month. No long lock-in contracts.
         icon: target
         color: orange
   - type: cta
-    title: "Need extra hands on an account?"
-    description: "Tell us about the accounts you need support with and we'll put together a plan."
+    title: Need extra hands on an account?
+    description: Tell us about the accounts you need support with and we'll put
+      together a plan for you.
