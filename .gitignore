@@ -1,5 +1,7 @@
 # build output
 dist/
+# generated at build time by `npm run build:admin-css`
+public/admin/preview.css
 # generated types
 .astro/
 
