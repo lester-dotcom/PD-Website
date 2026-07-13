@@ -11,9 +11,14 @@ const platforms = [
   { title: 'Other Platforms', href: '/paid-social/other-platforms', description: 'LinkedIn and Pinterest, plus other channels, evaluated on merit for your audience.', icon: 'compass', color: 'orange' },
 ] as const;
 
-const cardColors = {
-  green: 'bg-brand-green',
-  orange: 'bg-brand-orange',
+const borderColors = {
+  green: 'border-brand-green',
+  orange: 'border-brand-orange',
+} as const;
+
+const badgeColors = {
+  green: 'bg-brand-green/10 text-brand-green-dark',
+  orange: 'bg-brand-orange/10 text-brand-orange-dark',
 } as const;
 ---
 
@@ -26,6 +31,7 @@ const cardColors = {
     title="Paid Social Management: Creative-Led Campaigns That Convert"
     description="Paid social succeeds or fails on creative and tracking. We manage both, testing systematically and making sure the data behind every decision is accurate."
     cluster={cornerSocial}
+    anchorLogo="facebook"
   />
 
   <section class="bg-brand-slate">
@@ -34,20 +40,18 @@ const cardColors = {
         {platforms.map((platform) => (
           <a
             href={platform.href}
-            class={`group block rounded-2xl p-8 transition hover:-translate-y-1 hover:shadow-xl ${cardColors[platform.color]}`}
+            class={`group block rounded-2xl border-2 bg-white p-8 transition hover:-translate-y-1 hover:shadow-lg ${borderColors[platform.color]}`}
           >
             {'platform' in platform ? (
-              <div class="inline-flex items-center rounded-xl bg-white/90 px-4 py-3">
-                <PlatformLogo platform={platform.platform} class="h-7 w-auto" />
-              </div>
+              <PlatformLogo platform={platform.platform} class="h-8 w-auto" />
             ) : (
-              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+              <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[platform.color]}`}>
                 <Icon name={platform.icon} class="h-6 w-6" />
               </div>
             )}
             <h3 class="mt-4 text-lg font-semibold text-brand-slate">{platform.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate/75">{platform.description}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-slate opacity-0 transition group-hover:opacity-100">
+            <p class="mt-2 text-sm text-brand-slate-light">{platform.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-green-dark opacity-0 transition group-hover:opacity-100">
               Learn more →
             </span>
           </a>

@@ -1,5 +1,5 @@
 ---
-import IconCluster, { cornerGeneral, type CircleSpec } from './IconCluster.astro';
+import IconCluster, { cornerGeneral, type CircleSpec, type AnchorLogo } from './IconCluster.astro';
 import PlatformBadge, { type PlatformName } from './PlatformBadge.astro';
 
 interface Props {
@@ -8,14 +8,15 @@ interface Props {
   description: string;
   platform?: PlatformName;
   cluster?: CircleSpec[];
+  anchorLogo?: AnchorLogo;
 }
 
-const { eyebrow, title, description, platform, cluster = cornerGeneral } = Astro.props;
+const { eyebrow, title, description, platform, cluster = cornerGeneral, anchorLogo = 'pratt' } = Astro.props;
 ---
 
 <section class="relative overflow-hidden border-b border-gray-100 bg-gray-50">
   <div class="pointer-events-none absolute right-0 top-0 h-56 w-56 sm:h-72 sm:w-72">
-    <IconCluster viewBox="0 0 160 160" circles={cluster} />
+    <IconCluster viewBox="0 0 160 160" circles={cluster} anchorLogo={anchorLogo} />
   </div>
 
   <div class="relative mx-auto max-w-4xl px-6 py-16 text-center sm:py-20">

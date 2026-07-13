@@ -1,5 +1,13 @@
 ---
+import { getImage } from 'astro:assets';
 import { iconPaths, type IconName } from '../lib/icon-paths';
+import googleIcon from '../assets/logos/icon/google.png';
+import microsoftIcon from '../assets/logos/icon/microsoft.png';
+import metaIcon from '../assets/logos/icon/meta.png';
+import linkedinIcon from '../assets/logos/icon/linkedin.png';
+import pinterestIcon from '../assets/logos/icon/pinterest.png';
+
+export type AnchorLogo = 'google' | 'bing' | 'facebook' | 'linkedin' | 'pinterest' | 'pratt';
 
 export interface CircleSpec {
   cx: number;
@@ -8,19 +16,23 @@ export interface CircleSpec {
   variant: 'fill-green' | 'fill-orange' | 'fill-slate' | 'outline-green' | 'outline-orange';
   icon?: IconName;
   letter?: string;
+  isAnchor?: boolean;
 }
 
 interface Props {
   class?: string;
   viewBox?: string;
   circles?: CircleSpec[];
+  anchorLogo?: AnchorLogo;
 }
 
 // Scattered circle-badge composition inspired by Pratt Digital's own office wall graphic
 // (SMD_PD09_Wall-Graphics_AW.pdf). Only icons/letters that actually appear in that artwork
 // are used here: hashtag, search, eye, location pin, thumbs up, gear, megaphone, YouTube
 // play, forward arrow, Instagram camera, target, heart, and the Google/Bing/Facebook/
-// Amazon/LinkedIn/Pinterest letter marks.
+// Amazon/LinkedIn/Pinterest letter marks. The big anchor circle (blank in the source art,
+// where the physical wall graphic has the Pratt Digital logo) shows a page-relevant platform
+// icon or the Pratt favicon mark instead, via the anchorLogo prop.
 export const heroCluster: CircleSpec[] = [
   { cx: 30, cy: 310, r: 22, variant: 'outline-orange', icon: 'hashtag' },
   { cx: 85, cy: 260, r: 28, variant: 'outline-green', icon: 'search' },
@@ -35,7 +47,7 @@ export const heroCluster: CircleSpec[] = [
   { cx: 395, cy: 170, r: 25, variant: 'outline-orange', icon: 'arrow-forward' },
   { cx: 420, cy: 115, r: 18, variant: 'fill-green', icon: 'eye' },
   { cx: 445, cy: 150, r: 13, variant: 'fill-orange', letter: 'G' },
-  { cx: 410, cy: 55, r: 55, variant: 'fill-green' },
+  { cx: 410, cy: 55, r: 55, variant: 'fill-green', isAnchor: true },
   { cx: 55, cy: 345, r: 4, variant: 'fill-slate' },
   { cx: 200, cy: 330, r: 5, variant: 'fill-green' },
   { cx: 380, cy: 270, r: 4, variant: 'fill-orange' },
@@ -45,7 +57,7 @@ export const heroCluster: CircleSpec[] = [
 // Corner-accent variants for PageHero: different pages get different mixes, all still
 // drawn from the same confirmed wall-graphic set, for the "mix it up" variety Lester asked for.
 export const cornerSearch: CircleSpec[] = [
-  { cx: 115, cy: 45, r: 42, variant: 'fill-green' },
+  { cx: 115, cy: 45, r: 42, variant: 'fill-green', isAnchor: true },
   { cx: 45, cy: 30, r: 18, variant: 'fill-slate', letter: 'b' },
   { cx: 40, cy: 90, r: 22, variant: 'outline-green', icon: 'search' },
   { cx: 120, cy: 105, r: 16, variant: 'outline-orange', icon: 'target' },
@@ -54,7 +66,7 @@ export const cornerSearch: CircleSpec[] = [
 ];
 
 export const cornerSocial: CircleSpec[] = [
-  { cx: 115, cy: 45, r: 42, variant: 'fill-orange' },
+  { cx: 115, cy: 45, r: 42, variant: 'fill-orange', isAnchor: true },
   { cx: 45, cy: 30, r: 17, variant: 'fill-slate', letter: 'f' },
   { cx: 40, cy: 90, r: 21, variant: 'outline-orange', icon: 'heart' },
   { cx: 122, cy: 105, r: 16, variant: 'fill-slate', icon: 'instagram' },
@@ -63,7 +75,7 @@ export const cornerSocial: CircleSpec[] = [
 ];
 
 export const cornerAgency: CircleSpec[] = [
-  { cx: 115, cy: 45, r: 42, variant: 'fill-green' },
+  { cx: 115, cy: 45, r: 42, variant: 'fill-green', isAnchor: true },
   { cx: 45, cy: 28, r: 17, variant: 'fill-slate', letter: 'in' },
   { cx: 40, cy: 90, r: 21, variant: 'outline-green', icon: 'thumbsup' },
   { cx: 122, cy: 105, r: 16, variant: 'outline-orange', icon: 'gear' },
@@ -72,7 +84,7 @@ export const cornerAgency: CircleSpec[] = [
 ];
 
 export const cornerContent: CircleSpec[] = [
-  { cx: 115, cy: 45, r: 42, variant: 'fill-orange' },
+  { cx: 115, cy: 45, r: 42, variant: 'fill-orange', isAnchor: true },
   { cx: 45, cy: 30, r: 18, variant: 'fill-slate', letter: 'P' },
   { cx: 40, cy: 90, r: 22, variant: 'outline-orange', icon: 'hashtag' },
   { cx: 122, cy: 105, r: 16, variant: 'fill-slate', icon: 'youtube' },
@@ -81,7 +93,7 @@ export const cornerContent: CircleSpec[] = [
 ];
 
 export const cornerGeneral: CircleSpec[] = [
-  { cx: 115, cy: 45, r: 42, variant: 'fill-green' },
+  { cx: 115, cy: 45, r: 42, variant: 'fill-green', isAnchor: true },
   { cx: 45, cy: 30, r: 17, variant: 'fill-slate', letter: 'a' },
   { cx: 40, cy: 90, r: 21, variant: 'outline-green', icon: 'eye' },
   { cx: 122, cy: 105, r: 16, variant: 'outline-orange', icon: 'arrow-forward' },
@@ -94,7 +106,8 @@ export const cornerClusters = [cornerSearch, cornerSocial, cornerAgency, cornerC
 // Kept for back-compat with earlier callers.
 export const cornerCluster = cornerGeneral;
 
-const { class: className = 'h-full w-full', viewBox = '0 0 480 360', circles = heroCluster } = Astro.props;
+const { class: className = 'h-full w-full', viewBox = '0 0 480 360', circles = heroCluster, anchorLogo } =
+  Astro.props;
 
 const fill = {
   'fill-green': 'var(--color-brand-green)',
@@ -119,23 +132,61 @@ const glyphColor = {
   'outline-green': 'var(--color-brand-green)',
   'outline-orange': 'var(--color-brand-orange)',
 } as const;
+
+const anchorBorder = {
+  'fill-green': 'var(--color-brand-green)',
+  'fill-orange': 'var(--color-brand-orange)',
+  'fill-slate': 'var(--color-brand-slate)',
+  'outline-green': 'var(--color-brand-green)',
+  'outline-orange': 'var(--color-brand-orange)',
+} as const;
+
+let anchorImageHref: string | null = null;
+if (anchorLogo) {
+  const sources = {
+    google: googleIcon,
+    bing: microsoftIcon,
+    facebook: metaIcon,
+    linkedin: linkedinIcon,
+    pinterest: pinterestIcon,
+  } as const;
+
+  if (anchorLogo === 'pratt') {
+    anchorImageHref = '/favicon-512.png';
+  } else {
+    const optimized = await getImage({ src: sources[anchorLogo], width: 200 });
+    anchorImageHref = optimized.src;
+  }
+}
 ---
 
 <svg viewBox={viewBox} class={className} aria-hidden="true">
   {circles.map((c) => {
     const isOutline = c.variant.startsWith('outline');
     const iconSize = c.r * 1.15;
+    const showAnchorLogo = c.isAnchor && anchorImageHref;
+    const logoSize = c.r * 1.15;
     return (
       <g>
         <circle
           cx={c.cx}
           cy={c.cy}
           r={c.r}
-          fill={fill[c.variant]}
-          stroke={strokeColor[c.variant]}
-          stroke-width={isOutline ? Math.max(1.5, c.r * 0.09) : 0}
+          fill={showAnchorLogo ? 'white' : fill[c.variant]}
+          stroke={showAnchorLogo ? anchorBorder[c.variant] : strokeColor[c.variant]}
+          stroke-width={showAnchorLogo ? Math.max(2, c.r * 0.06) : isOutline ? Math.max(1.5, c.r * 0.09) : 0}
         />
-        {c.icon && (
+        {showAnchorLogo && (
+          <image
+            href={anchorImageHref}
+            x={c.cx - logoSize / 2}
+            y={c.cy - logoSize / 2}
+            width={logoSize}
+            height={logoSize}
+            preserveAspectRatio="xMidYMid meet"
+          />
+        )}
+        {!showAnchorLogo && c.icon && (
           <g transform={`translate(${c.cx - iconSize / 2}, ${c.cy - iconSize / 2}) scale(${iconSize / 24})`}>
             <path
               d={iconPaths[c.icon]}
@@ -147,7 +198,7 @@ const glyphColor = {
             />
           </g>
         )}
-        {c.letter && (
+        {!showAnchorLogo && c.letter && (
           <text
             x={c.cx}
             y={c.cy}

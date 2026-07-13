@@ -12,9 +12,14 @@ const workshops = [
   { title: 'Bespoke Team Training', description: 'Tailored sessions built around your accounts, your goals and your team’s current skill level.', icon: 'users', color: 'orange' },
 ] as const;
 
-const cardColors = {
-  green: 'bg-brand-green',
-  orange: 'bg-brand-orange',
+const borderColors = {
+  green: 'border-brand-green',
+  orange: 'border-brand-orange',
+} as const;
+
+const badgeColors = {
+  green: 'bg-brand-green/10 text-brand-green-dark',
+  orange: 'bg-brand-orange/10 text-brand-orange-dark',
 } as const;
 ---
 
@@ -33,12 +38,12 @@ const cardColors = {
     <div class="mx-auto max-w-6xl px-6 py-20">
       <div class="grid gap-6 sm:grid-cols-2">
         {workshops.map((workshop) => (
-          <div class={`rounded-2xl p-6 ${cardColors[workshop.color]}`}>
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[workshop.color]}`}>
+            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[workshop.color]}`}>
               <Icon name={workshop.icon} class="h-6 w-6" />
             </div>
             <h3 class="mt-4 font-semibold text-brand-slate">{workshop.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate/75">{workshop.description}</p>
+            <p class="mt-2 text-sm text-brand-slate-light">{workshop.description}</p>
           </div>
         ))}
       </div>

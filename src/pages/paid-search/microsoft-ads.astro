@@ -13,9 +13,14 @@ const reasons = [
   { title: 'Audience Network', description: 'Native and display placements across the Microsoft ecosystem, including LinkedIn profile targeting.', platform: 'linkedin', color: 'orange' },
 ] as const;
 
-const cardColors = {
-  green: 'bg-brand-green',
-  orange: 'bg-brand-orange',
+const borderColors = {
+  green: 'border-brand-green',
+  orange: 'border-brand-orange',
+} as const;
+
+const badgeColors = {
+  green: 'bg-brand-green/10 text-brand-green-dark',
+  orange: 'bg-brand-orange/10 text-brand-orange-dark',
 } as const;
 ---
 
@@ -29,14 +34,15 @@ const cardColors = {
     description="Microsoft Ads is often overlooked, but it's a genuine incremental channel, usually at a lower cost per click, with unique B2B targeting through LinkedIn profile data."
     platform="bing"
     cluster={cornerSearch}
+    anchorLogo="bing"
   />
 
   <section class="bg-brand-slate">
     <div class="mx-auto max-w-6xl px-6 py-20">
       <div class="grid gap-6 sm:grid-cols-2">
         {reasons.map((item) => (
-          <div class={`rounded-2xl p-6 ${cardColors[item.color]}`}>
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[item.color]}`}>
+            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[item.color]}`}>
               {'platform' in item ? (
                 <PlatformBadge platform={item.platform} class="h-6 w-6" />
               ) : (
@@ -44,7 +50,7 @@ const cardColors = {
               )}
             </div>
             <h3 class="mt-4 font-semibold text-brand-slate">{item.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate/75">{item.description}</p>
+            <p class="mt-2 text-sm text-brand-slate-light">{item.description}</p>
           </div>
         ))}
       </div>

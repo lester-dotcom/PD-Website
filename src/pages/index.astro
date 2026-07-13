@@ -74,9 +74,9 @@ const pillars = [
   },
 ] as const;
 
-const cardColors = {
-  green: 'bg-brand-green',
-  orange: 'bg-brand-orange',
+const borderColors = {
+  green: 'border-brand-green',
+  orange: 'border-brand-orange',
 } as const;
 ---
 
@@ -112,7 +112,7 @@ const cardColors = {
       </div>
 
       <div class="relative hidden h-80 lg:block" aria-hidden="true">
-        <IconCluster />
+        <IconCluster anchorLogo="pratt" />
       </div>
     </div>
   </section>
@@ -131,14 +131,12 @@ const cardColors = {
         {services.map((service) => (
           <a
             href={service.href}
-            class={`group block rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-xl ${cardColors[service.color]}`}
+            class={`group block rounded-2xl border-2 bg-white p-6 transition hover:-translate-y-1 hover:shadow-lg ${borderColors[service.color]}`}
           >
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
-              <Icon name={service.icon} class="h-6 w-6" />
-            </div>
+            <IconBadge icon={service.icon} color={service.color} />
             <h3 class="mt-4 font-semibold text-brand-slate">{service.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate/75">{service.description}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-slate opacity-0 transition group-hover:opacity-100">
+            <p class="mt-2 text-sm text-brand-slate-light">{service.description}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-green-dark opacity-0 transition group-hover:opacity-100">
               Learn more →
             </span>
           </a>

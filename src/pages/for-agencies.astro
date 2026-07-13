@@ -12,9 +12,14 @@ const points = [
   { title: 'Flexible engagement', description: 'Scale up or down per account, per month. No long lock-in contracts.', icon: 'target', color: 'orange' },
 ] as const;
 
-const cardColors = {
-  green: 'bg-brand-green',
-  orange: 'bg-brand-orange',
+const borderColors = {
+  green: 'border-brand-green',
+  orange: 'border-brand-orange',
+} as const;
+
+const badgeColors = {
+  green: 'bg-brand-green/10 text-brand-green-dark',
+  orange: 'bg-brand-orange/10 text-brand-orange-dark',
 } as const;
 ---
 
@@ -33,12 +38,12 @@ const cardColors = {
     <div class="mx-auto max-w-6xl px-6 py-20">
       <div class="grid gap-6 sm:grid-cols-2">
         {points.map((point) => (
-          <div class={`rounded-2xl p-6 ${cardColors[point.color]}`}>
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/30 text-brand-slate">
+          <div class={`rounded-2xl border-2 bg-white p-6 ${borderColors[point.color]}`}>
+            <div class={`flex h-12 w-12 items-center justify-center rounded-xl ${badgeColors[point.color]}`}>
               <Icon name={point.icon} class="h-6 w-6" />
             </div>
             <h3 class="mt-4 font-semibold text-brand-slate">{point.title}</h3>
-            <p class="mt-2 text-sm text-brand-slate/75">{point.description}</p>
+            <p class="mt-2 text-sm text-brand-slate-light">{point.description}</p>
           </div>
         ))}
       </div>
