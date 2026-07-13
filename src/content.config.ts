@@ -124,6 +124,7 @@ const pages = defineCollection({
     title: z.string(),
     metaDescription: z.string(),
     hidden: z.boolean().default(false),
+    redirectTo: z.string().optional(),
     showInNav: z.boolean().default(true),
     hero: z.object({
       eyebrow: z.string().optional(),

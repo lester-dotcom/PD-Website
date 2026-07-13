@@ -36,7 +36,12 @@ export default function hiddenPagesRedirects() {
           const filePath = join(projectRoot, 'src/content/pages', `${slug}.yaml`);
           if (!existsSync(filePath)) continue;
           const data = load(readFileSync(filePath, 'utf8'));
-          if (data?.hidden) rules.push(`${url}  /404  404!`);
+          if (!data?.hidden) continue;
+          if (data.redirectTo) {
+            rules.push(`${url}  ${data.redirectTo}  301!`);
+          } else {
+            rules.push(`${url}  /404  404!`);
+          }
         }
 
         const settingsPath = join(projectRoot, 'src/content/settings/site.yaml');

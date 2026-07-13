@@ -49,7 +49,7 @@ collections:
         label: "Homepage"
         file: "src/content/pages/homepage.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - label: "Hero"
             name: "hero"
@@ -249,9 +249,10 @@ collections:
         label: "About Us"
         file: "src/content/pages/about-us.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -267,9 +268,10 @@ collections:
         label: "Contact Us"
         file: "src/content/pages/contact-us.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -283,9 +285,10 @@ collections:
         label: "For Agencies"
         file: "src/content/pages/for-agencies.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -301,9 +304,10 @@ collections:
         label: "Paid Search"
         file: "src/content/pages/paid-search.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -319,9 +323,10 @@ collections:
         label: "Paid Search: Google Ads"
         file: "src/content/pages/paid-search-google-ads.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -337,9 +342,10 @@ collections:
         label: "Paid Search: Microsoft Ads"
         file: "src/content/pages/paid-search-microsoft-ads.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -355,9 +361,10 @@ collections:
         label: "Paid Social"
         file: "src/content/pages/paid-social.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -373,9 +380,10 @@ collections:
         label: "Paid Social: Meta"
         file: "src/content/pages/paid-social-meta.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -391,9 +399,10 @@ collections:
         label: "Paid Social: Other Platforms"
         file: "src/content/pages/paid-social-other-platforms.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -409,9 +418,10 @@ collections:
         label: "Training and Workshops"
         file: "src/content/pages/training-and-workshops.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
@@ -427,9 +437,10 @@ collections:
         label: "AI"
         file: "src/content/pages/ai.yaml"
         fields:
-          - { label: "Browser Tab Title", name: "title", widget: "string" }
+          - { label: "Page Title (used for SEO and the browser tab)", name: "title", widget: "string" }
           - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
           - { label: "Hide this page (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+          - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /paid-search — sends visitors here instead of a 404. Leave blank to just show 404." }
           - { label: "Show in navigation menu", name: "showInNav", widget: "boolean", default: true }
           - label: "Hero"
             name: "hero"
