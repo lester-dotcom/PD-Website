@@ -1,0 +1,77 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlatformBadge from '../../components/PlatformBadge.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { cornerGeneral } from '../../components/IconCluster.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies', ({ data }) => !data.hidden);
+  return studies.map((study) => ({
+    params: { id: study.id },
+    props: { study },
+  }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+---
+
+<BaseLayout
+  title={study.data.client}
+  description={study.data.metaDescription}
+  image={study.data.heroImage}
+>
+  <PageHero
+    eyebrow="Case Studies"
+    title={study.data.client}
+    description={study.data.summary}
+    heroImage={study.data.heroImage}
+    heroImageAlt={study.data.heroImageAlt}
+    cluster={cornerGeneral}
+  />
+
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    {study.data.platforms.length > 0 && (
+      <div class="mb-10 flex flex-wrap gap-2">
+        {study.data.platforms.map((platform) => (
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green-dark">
+            <PlatformBadge platform={platform} class="h-5 w-5" />
+          </div>
+        ))}
+      </div>
+    )}
+
+    {study.data.results.length > 0 && (
+      <div class="mb-12 grid gap-8 border-y border-gray-100 py-8 sm:grid-cols-3">
+        {study.data.results.map((result) => (
+          <div>
+            <p class="text-3xl font-bold text-brand-green-dark">{result.value}</p>
+            <p class="mt-1 text-sm text-brand-slate-light">{result.description}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <div class="prose-content space-y-6 text-brand-slate-light [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-brand-slate [&_h2]:pt-4 [&_ul]:list-disc [&_ul]:pl-6 [&_a]:text-brand-green-dark">
+      <Content />
+    </div>
+
+    {study.data.gallery.length > 0 && (
+      <div class="mt-12 grid gap-4 sm:grid-cols-2">
+        {study.data.gallery.map((item) => (
+          <img
+            src={item.image}
+            alt={item.alt || ''}
+            loading="lazy"
+            decoding="async"
+            class="aspect-video w-full rounded-xl border-2 border-brand-orange object-cover"
+          />
+        ))}
+      </div>
+    )}
+  </section>
+
+  <CtaBanner title="Want results like this?" description="Tell us about your account and we'll put together a plan." />
+</BaseLayout>

@@ -155,4 +155,21 @@ const settings = defineCollection({
   }),
 });
 
-export const collections = { blog, pages, settings };
+const caseStudies = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/case-studies' }),
+  schema: z.object({
+    client: z.string(),
+    summary: z.string(),
+    metaDescription: z.string(),
+    heroImage: z.string().optional(),
+    heroImageAlt: z.string().optional(),
+    platforms: z.array(platformName).default([]),
+    results: z.array(z.object({ value: z.string(), description: z.string() })).default([]),
+    gallery: z.array(z.object({ image: z.string(), alt: z.string().optional() })).default([]),
+    pubDate: z.coerce.date(),
+    hidden: z.boolean().default(false),
+    redirectTo: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, pages, settings, caseStudies };

@@ -29,6 +29,45 @@ collections:
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "caseStudies"
+    label: "Case Studies"
+    folder: "src/content/case-studies"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Client / Project Name", name: "client", widget: "string" }
+      - { label: "Summary (shown on the case studies list)", name: "summary", widget: "text" }
+      - { label: "Meta Description (SEO)", name: "metaDescription", widget: "text" }
+      - { label: "Hero Photo", name: "heroImage", widget: "image", required: false }
+      - { label: "Hero Photo Alt Text", name: "heroImageAlt", widget: "string", required: false }
+      - label: "Platforms"
+        name: "platforms"
+        widget: "select"
+        multiple: true
+        required: false
+        options: ["google", "bing", "facebook", "instagram", "linkedin", "pinterest", "youtube"]
+      - label: "Results"
+        name: "results"
+        widget: "list"
+        required: false
+        summary: "{{fields.value}}: {{fields.description}}"
+        fields:
+          - { label: "Stat (e.g. +40%)", name: "value", widget: "string" }
+          - { label: "Description (e.g. increase in conversions)", name: "description", widget: "string" }
+      - label: "Photo Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "Alt Text", name: "alt", widget: "string", required: false }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Hide this case study (visitors will see a 404, content stays saved here)", name: "hidden", widget: "boolean", default: false }
+      - { label: "Redirect to (optional, only used when hidden)", name: "redirectTo", widget: "string", required: false, hint: "e.g. /case-studies - sends visitors here instead of a 404. Leave blank to just show 404." }
+      - { label: "Full Write-Up", name: "body", widget: "markdown" }
+
   - name: "settings"
     label: "Site Settings"
     files:

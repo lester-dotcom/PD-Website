@@ -1,7 +1,13 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { load } from 'js-yaml';
+
+function parseFrontmatter(fileContent) {
+  const match = fileContent.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return {};
+  return load(match[1]) ?? {};
+}
 
 // Maps each CMS page-content slug (src/content/pages/<slug>.yaml) to its live route.
 // Kept here rather than derived, since Astro has no generic route<->content mapping
@@ -49,6 +55,20 @@ export default function hiddenPagesRedirects() {
           const settings = load(readFileSync(settingsPath, 'utf8'));
           if (settings?.blogVisible === false) {
             rules.push('/blog  /404  404!', '/blog/*  /404  404!');
+          }
+        }
+
+        // Case studies with hidden+redirectTo are filtered out of getStaticPaths entirely
+        // (no page built, natural 404), so only the redirect case needs a rule here.
+        const caseStudiesDir = join(projectRoot, 'src/content/case-studies');
+        if (existsSync(caseStudiesDir)) {
+          for (const file of readdirSync(caseStudiesDir)) {
+            if (!file.endsWith('.md')) continue;
+            const data = parseFrontmatter(readFileSync(join(caseStudiesDir, file), 'utf8'));
+            if (data.hidden && data.redirectTo) {
+              const slug = file.replace(/\.md$/, '');
+              rules.push(`/case-studies/${slug}  ${data.redirectTo}  301!`);
+            }
           }
         }
 

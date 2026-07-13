@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlatformBadge from '../../components/PlatformBadge.astro';
+import { cornerGeneral } from '../../components/IconCluster.astro';
+
+const caseStudies = (await getCollection('caseStudies', ({ data }) => !data.hidden)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Case Studies"
+  description="Real results from paid search and paid social accounts managed by Pratt Digital."
+>
+  <PageHero
+    eyebrow="Case Studies"
+    title="Case Studies: Real Accounts, Real Results"
+    description="A look at the work behind the numbers: what we changed, why, and what it did for the account."
+    cluster={cornerGeneral}
+  />
+
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    {caseStudies.length === 0 ? (
+      <p class="text-brand-slate-light">Case studies are coming soon.</p>
+    ) : (
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {caseStudies.map((study) => (
+          <a
+            href={`/case-studies/${study.id}`}
+            class="group flex flex-col overflow-hidden rounded-2xl border-2 border-brand-green bg-white transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            {study.data.heroImage && (
+              <img
+                src={study.data.heroImage}
+                alt={study.data.heroImageAlt || ''}
+                loading="lazy"
+                decoding="async"
+                class="aspect-video w-full object-cover"
+              />
+            )}
+            <div class="flex flex-1 flex-col p-6">
+              {study.data.platforms.length > 0 && (
+                <div class="mb-3 flex gap-2">
+                  {study.data.platforms.map((platform) => (
+                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-green/10 text-brand-green-dark">
+                      <PlatformBadge platform={platform} class="h-4 w-4" />
+                    </div>
+                  ))}
+                </div>
+              )}
+              <h2 class="font-semibold text-brand-slate">{study.data.client}</h2>
+              <p class="mt-2 flex-1 text-sm text-brand-slate-light">{study.data.summary}</p>
+              {study.data.results[0] && (
+                <p class="mt-4 text-lg font-bold text-brand-green-dark">
+                  {study.data.results[0].value}
+                  <span class="ml-2 text-sm font-medium text-brand-slate-light">{study.data.results[0].description}</span>
+                </p>
+              )}
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-green-dark opacity-0 transition group-hover:opacity-100">
+                Read the case study →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
